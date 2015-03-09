@@ -1,0 +1,44 @@
+@import "global";
+
+/*
+Resets
+*/
+@import "inc/normalize";
+
+nav ul,
+nav ul li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	box-sizing: border-box;
+}
+*, *::before, *::after {
+	box-sizing: inherit;
+}
+
+/*
+Typography
+*/
+@import "modules/typo";
+
+/*
+Layout
+*/
+.page_wrap {
+	display: flex;
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+.main_header {
+	width: 258px;
+	flex: 0 0 auto;
+	border-right: 1px solid $separators_color;
+}
+
+.main_content {
+	flex: 1 0 auto;
+}
