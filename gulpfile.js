@@ -6,6 +6,7 @@ var gulp = require('gulp'),
 	imagemin = require('gulp-imagemin'),
 //	sprite_smith = require('gulp.spritesmith'),
 	svgstore = require('gulp-svgstore'),
+	rename = require('gulp-rename'),
 //	replace = require('gulp-replace'),
 //	concat = require('gulp-concat'),
 //	uglify = require('gulp-uglify'),
@@ -84,9 +85,9 @@ gulp.task( 'svg_sprite', function(){
 	gulp.src( 'src/svg_sprite/**/*.svg' )
 		.pipe( plumber( plumber_config ) )
 		.pipe( imagemin() )
+		.pipe( rename( { prefix: 'icon-' } ) )
 		.pipe( svgstore( {
-			fileName: 'svg_sprite.svg',
-			prefix: 'icon-'
+			fileName: 'svg_sprite.svg'
 		} ) )
 		.pipe( gulp.dest( 'dist/images' ) );
 } );

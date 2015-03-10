@@ -9,14 +9,51 @@
 	<!-- http://www.google.com/fonts/#UsePlace:use/Collection:Open+Sans:300italic,700italic,700,300 -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,700,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="../dist/css/layout.css"/>
+
+	<script>
+		var ajax = new XMLHttpRequest();
+		ajax.open("GET", "../dist/images/svg_sprite.svg", true);
+		ajax.send();
+		ajax.onload = function(e) {
+			var div = document.createElement("div");
+			div.style.display = 'none';
+			div.innerHTML = ajax.responseText;
+			document.body.insertBefore(div, document.body.childNodes[0]);
+		}
+	</script>
 </head>
 <body>
 
 <div class="page_wrap">
 
-	<header class="main_header">
-		header <br/>
-		hee
+	<header class="main_header" role="banner">
+
+		<a class="main_header__logo" href=""><svg class="main_header__logo__image" aria-label="Linnette Logo"><use xlink:href="#icon-logo"></use></svg></a>
+
+		<div class="divider" aria-hidden="true"><svg class="divider__image"><use xlink:href="#icon-divider"></use></svg></div>
+
+		<nav class="main_header__nav" role="navigation">
+			<ul class="main_header__nav__ul">
+				<li class="main_header__nav__ul__item"><a href="">Úvod</a></li>
+				<li class="main_header__nav__ul__item"><a href="">Portfolio</a></li>
+				<li class="main_header__nav__ul__item"><a href="">Retuše</a></li>
+				<li class="main_header__nav__ul__item"><a href="">Reference</a></li>
+				<li class="main_header__nav__ul__item"><a href="">Autor</a></li>
+				<li class="main_header__nav__ul__item"><a href="">Kontakt</a></li>
+			</ul>
+		</nav>
+
+		<div class="divider" aria-hidden="true"><svg class="divider__image"><use xlink:href="#icon-divider"></use></svg></div>
+
+		<nav class="main_header__socials">
+			<a class="main_header__socials__link" href=""><svg class="main_header__socials__link__image" aria-label="Facebook"><use xlink:href="#icon-facebook"></use></svg></a>
+			<a class="main_header__socials__link" href=""><svg class="main_header__socials__link__image" aria-label="Instagram"><use xlink:href="#icon-instagram"></use></svg></a>
+		</nav>
+
+		<div class="divider" aria-hidden="true"><svg class="divider__image"><use xlink:href="#icon-divider"></use></svg></div>
+
+		<div class="main_header__copyright">&copy; 2015 Linnette.cz</div>
+
 	</header>
 
 	<article class="main_content">

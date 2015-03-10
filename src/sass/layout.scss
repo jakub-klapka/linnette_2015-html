@@ -25,6 +25,11 @@ Typography
 @import "modules/typo";
 
 /*
+Global modules
+*/
+@import "modules/global_modules";
+
+/*
 Layout
 */
 .page_wrap {
@@ -37,6 +42,97 @@ Layout
 	width: 258px;
 	flex: 0 0 auto;
 	border-right: 1px solid $separators_color;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: ( 4 * $base_line_height );
+
+		&__logo {
+			flex: 0 0 auto;
+			width: 70%;
+			height: 0;
+			padding-bottom: ( ( 217/400 ) * 0.7 ) * 100%; //Logo: 400*217px
+			display: block;
+
+				&::after {
+					display: none;
+				}
+
+				&__image {
+					position: absolute;
+					width: 100%;
+					height: 100%;
+				}
+		}
+
+		&__nav {
+			display: block;
+			width: 70%;
+
+				&__ul {
+					display: flex;
+					flex-direction: column;
+
+						&__item {
+							margin-bottom: $base_line_height / 2;
+
+								&:last-of-type {
+									margin-bottom: 0;
+								}
+
+								&::after {
+									display: none;
+								}
+
+								a {
+									display: block;
+									text-align: center;
+									color: $text_color;
+									transition: color $transition;
+
+										&:hover {
+											color: $link_color;
+										}
+
+										&::after {
+											display: none;
+										}
+								}
+						}
+				}
+		}
+
+		&__socials {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 70%;
+			height: $base_line_height;
+
+				&__link {
+					color: $text_color;
+					margin: 0 5px;
+					transition: color $transition;
+
+						&:hover {
+							color: $link_color;
+						}
+
+						&__image {
+							display: block;
+							width: 25px;
+							height: 25px;
+						}
+
+						&::after {
+							display: none;
+						}
+				}
+		}
+
+		&__copyright {
+			font-size: 12px;
+		}
 }
 
 .main_content {
