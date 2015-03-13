@@ -7,6 +7,11 @@ $base_line_height: 30px;
 $base_font_size: 18px;
 $base_font_family: 'Open Sans', sans-serif;
 $transition: 300ms;
+$tablet_wrap: 1024px;
+$tablet_menu_width: 90px;
+$tablet_menu_button_width: 24px;
+$mobile_wrap: 480px;
+$mobile_menu_height: 50px;
 
 /*
 Colors
@@ -15,3 +20,21 @@ $text_color: #313131;
 $link_color: #fba07c;
 $highlight_color: #4ae5bd;
 $separators_color: #eeeeee;
+$body_bg: #FFF;
+
+/*
+Mixins
+*/
+@mixin respond-to( $key, $value: null ) {
+	@if( $key == 'tablet_wrap' ) {
+		@media only screen and ( max-width: $tablet_wrap ) {
+			@content;
+		}
+	}
+	@if( $key == 'mobile_wrap' ) {
+		@media only screen and ( max-width: $mobile_wrap ) {
+			@content;
+		}
+	}
+
+}
