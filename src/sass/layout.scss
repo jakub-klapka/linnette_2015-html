@@ -276,4 +276,55 @@ Layout
 
 .main_content {
 	flex: 0 1 auto;
+
+		&__breadcrumbs {
+			display: block;
+			width: 100%;
+			overflow: hidden;
+
+				&__wrap {
+					overflow-x: auto;
+					padding: ( $base_line_height / 2 ) $base_line_height;
+					white-space: nowrap;
+					padding-bottom: 50px; //Hide scrollbar
+					margin-bottom: -50px;
+				}
+
+				&__item {
+					color: $text_color;
+					text-transform: uppercase;
+					font-size: 14px;
+					transition: color $transition;
+
+						&::after {
+							content: '>';
+							display: inline-block;
+							position: relative;
+							border: none;
+							left: auto;
+							top: auto;
+							bottom: auto;
+							right: auto;
+							margin-left: 10px;
+							margin-right: 5px;
+						}
+
+						&:last-child::after {
+							display: none;
+						}
+
+						&:hover {
+							color: $link_color;
+
+								&::after {
+									opacity: 1;
+								}
+						}
+
+						&.is-active {
+							font-weight: 700;
+							color: $link_color;
+						}
+				}
+		}
 }
