@@ -9,6 +9,7 @@
 	<!-- http://www.google.com/fonts/#UsePlace:use/Collection:Open+Sans:300italic,700italic,700,300 -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,700,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="../dist/css/layout.css"/>
+	<link rel="stylesheet" href="../dist/css/lightbox.css"/>
 
 	<script>
 		var ajax = new XMLHttpRequest();
@@ -101,17 +102,15 @@
 				laboriosam magni nesciunt pariatur perspiciatis possimus reprehenderit soluta sunt voluptate. Commodi
 				eos ex, illum iure maiores soluta velit veritatis!</p>
 
-			<!-- TODO: correct sizes -->
 			<div class="article_gallery is-2-cols">
 				<figure class="article_gallery__item">
 					<div class="article_gallery__item__image_wrap">
 						<img class="article_gallery__item__image"
 						     alt="Bez captionu"
-						     srcset="sample_content/zatopeny_lom_1023.jpg 1023w,
-						            sample_content/zatopeny_lom_800.jpg 800w,
-						            sample_content/zatopeny_lom_400.jpg 400w"
-						     sizes="(min-width: 1280px) 1022px, (min-width: 1024px) calc( 100% - 228px ), 100vw"
-						     width="3000" height="2000" />
+						     srcset="sample_content/sample_portrait_488.jpg 488w"
+						     sizes="(min-width: 1280px) 490px, (min-width: 800px) 50vw, 100vw"
+						     width="3000" height="2000"
+							 data-url="sample_content/sample_portrait_488.jpg" data-width="488" data-height="731"/>
 						<svg class="article_gallery__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
 					</div>
 				</figure>
@@ -123,7 +122,8 @@
 						            sample_content/zatopeny_lom_800.jpg 800w,
 						            sample_content/zatopeny_lom_400.jpg 400w"
 						     sizes="(min-width: 1280px) 1022px, (min-width: 1024px) calc( 100% - 228px ), 100vw"
-						     width="3000" height="2000" />
+						     width="3000" height="2000"
+							 data-url="sample_content/zatopeny_lom_1023.jpg" data-width="1023" data-height="512" />
 						<svg class="article_gallery__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
 					</div>
 					<figcaption class="article_gallery__item__caption">Popis obrázku</figcaption>
@@ -136,7 +136,8 @@
 						            sample_content/zatopeny_lom_800.jpg 800w,
 						            sample_content/zatopeny_lom_400.jpg 400w"
 						     sizes="(min-width: 1280px) 1022px, (min-width: 1024px) calc( 100% - 228px ), 100vw"
-						     width="3000" height="2000" />
+						     width="3000" height="2000"
+							 data-url="sample_content/zatopeny_lom_1023.jpg" data-width="1023" data-height="512" />
 						<svg class="article_gallery__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
 					</div>
 				</figure>
@@ -148,7 +149,8 @@
 						            sample_content/zatopeny_lom_800.jpg 800w,
 						            sample_content/zatopeny_lom_400.jpg 400w"
 						     sizes="(min-width: 1280px) 1022px, (min-width: 1024px) calc( 100% - 228px ), 100vw"
-						     width="3000" height="2000" />
+						     width="3000" height="2000"
+							 data-url="sample_content/zatopeny_lom_1023.jpg" data-width="1023" data-height="512" />
 						<svg class="article_gallery__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
 					</div>
 				</figure>
@@ -163,7 +165,8 @@
 						            sample_content/zatopeny_lom_800.jpg 800w,
 						            sample_content/zatopeny_lom_400.jpg 400w"
 						     sizes="(min-width: 1280px) 1022px, (min-width: 1024px) calc( 100% - 228px ), 100vw"
-						     width="3000" height="2000" />
+						     width="3000" height="2000"
+							 data-url="sample_content/zatopeny_lom_1023.jpg" data-width="1023" data-height="512" />
 						<svg class="article_gallery__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
 					</div>
 				</figure>
@@ -175,7 +178,8 @@
 						            sample_content/zatopeny_lom_800.jpg 800w,
 						            sample_content/zatopeny_lom_400.jpg 400w"
 						     sizes="(min-width: 1280px) 1022px, (min-width: 1024px) calc( 100% - 228px ), 100vw"
-						     width="3000" height="2000" />
+						     width="3000" height="2000"
+							 data-url="sample_content/zatopeny_lom_1023.jpg" data-width="1023" data-height="512" />
 						<svg class="article_gallery__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
 					</div>
 					<figcaption class="article_gallery__item__caption">Popis obrázku</figcaption>
@@ -188,7 +192,8 @@
 						            sample_content/zatopeny_lom_800.jpg 800w,
 						            sample_content/zatopeny_lom_400.jpg 400w"
 						     sizes="(min-width: 1280px) 1022px, (min-width: 1024px) calc( 100% - 228px ), 100vw"
-						     width="3000" height="2000" />
+						     width="3000" height="2000"
+							 data-url="sample_content/zatopeny_lom_1023.jpg" data-width="1023" data-height="512" />
 						<svg class="article_gallery__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
 					</div>
 					<figcaption class="article_gallery__item__caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem error odit quia? Earum, quod ratione. Dignissimos, eaque facilis, itaque libero magnam maxime minima mollitia omnis quibusdam reiciendis saepe sed sequi!</figcaption>
@@ -209,11 +214,86 @@
 </div>
 
 
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+	<!-- Background of PhotoSwipe.
+		 It's a separate element as animating opacity is faster than rgba(). -->
+	<div class="pswp__bg"></div>
+
+	<!-- Slides wrapper with overflow:hidden. -->
+	<div class="pswp__scroll-wrap">
+
+		<!-- Container that holds slides.
+			PhotoSwipe keeps only 3 of them in the DOM to save memory.
+			Don't modify these 3 pswp__item elements, data is added later on. -->
+		<div class="pswp__container">
+			<div class="pswp__item"></div>
+			<div class="pswp__item"></div>
+			<div class="pswp__item"></div>
+		</div>
+
+		<!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+		<div class="pswp__ui pswp__ui--hidden">
+
+			<div class="pswp__top-bar">
+
+				<!--  Controls are self-explanatory. Order can be changed. -->
+
+				<div class="pswp__counter"></div>
+
+				<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+				<button class="pswp__button pswp__button--share" title="Share"></button>
+
+				<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+				<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+				<!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+				<!-- element will get class pswp__preloader--active when preloader is running -->
+				<div class="pswp__preloader">
+					<div class="pswp__preloader__icn">
+						<div class="pswp__preloader__cut">
+							<div class="pswp__preloader__donut"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+				<div class="pswp__share-tooltip"></div>
+			</div>
+
+			<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+			</button>
+
+			<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+			</button>
+
+			<div class="pswp__caption">
+				<div class="pswp__caption__center"></div>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+
+
+
 <script src="js/jquery-2.1.3.js"></script>
 <script src="js/velocity.js"></script> <!-- jq -->
 <script src="js/enquire.js"></script>
 <script src="js/menu.js"></script> <!-- jq, velocity, enquire -->
 <script src="js/breadcrumbs.js"></script> <!-- jq -->
+
+<script src="js/photoswipe.js"></script>
+<script src="js/photoswipe-ui-default.js"></script><!-- photoswipe -->
+<script src="js/lightbox.js"></script><!-- jq, photoswipe-ui -->
 
 </body>
 </html>

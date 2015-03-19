@@ -12,6 +12,7 @@ $tablet_menu_width: 60px;
 $tablet_menu_button_width: 24px;
 $mobile_wrap: 480px; //also in menu.js
 $mobile_menu_height: 50px;
+$article_gallery_wrap: 800px;
 
 /*
 Colors
@@ -33,6 +34,11 @@ Mixins
 	}
 	@if( $key == 'mobile_wrap' ) {
 		@media only screen and ( max-width: $mobile_wrap ) {
+			@content;
+		}
+	}
+	@if( $key == 'article_gallery_wrap' ) {
+		@media only screen and ( max-width: $article_gallery_wrap ) {
 			@content;
 		}
 	}

@@ -434,15 +434,25 @@ Layout
 			justify-content: space-between;
 			flex-wrap: wrap;
 
+				@include respond-to( 'article_gallery_wrap' ) {
+					display: block;
+				}
+
 				#{$root}__item {
 					flex: 0 0 auto;
 					width: calc( 50% - #{( $margins / 2 )} );
 					margin-bottom: 0;
 
+						@include respond-to( 'article_gallery_wrap' ) {
+							width: 100%;
+							margin-bottom: $margins;
+						}
+
 						&:nth-child( -n + 2 ) {
 							//First two elements dont have margin top - is collapsed from parent
 							margin-top: 0;
 						}
+
 				}
 		}
 }
