@@ -34,7 +34,7 @@ Layout
 */
 .page_wrap {
 	display: flex;
-	max-width: 1280px;
+	max-width: 1280px; //also in sizes
 	//margin: 0 auto;
 	position: relative;
 	width: 100%;
@@ -152,7 +152,7 @@ Layout
 }
 
 .main_header {
-	width: 258px;
+	width: 258px; //also in sizes
 	flex: 0 0 auto;
 	border-right: 1px solid $separators_color;
 	display: flex;
@@ -281,6 +281,7 @@ Layout
 			display: block;
 			width: 100%;
 			overflow: hidden;
+			height: $base_line_height*2;
 
 				&__wrap {
 					overflow-x: auto;
@@ -324,6 +325,123 @@ Layout
 						&.is-active {
 							font-weight: 700;
 							color: $link_color;
+						}
+				}
+		}
+
+		&__typo {
+			padding-left: $base_line_height;
+			padding-right: $base_line_height;
+		}
+}
+
+.article_image {
+	display: block;
+	width: 100%;
+	margin: 0 0 $base_line_height 0;
+	position: relative;
+
+		&__image {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+
+		&__caption {
+			position: absolute;
+			display: block;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			color: $body_bg;
+			font-size: 30px;
+			padding: $base_line_height $base_line_height ( $base_line_height / 2 ) $base_line_height;
+			background-image: linear-gradient( to bottom, rgba( 0,0,0,0 ) 0%, rgba( 0,0,0, 0.5 ) 100% );
+
+				span {
+					font-size: 14px;
+					font-weight: 700;
+					text-transform: uppercase;
+				}
+		}
+}
+
+.article_gallery {
+	$margins: $base_line_height / 2;
+	margin: #{$margins} #{-$margins};
+	$root: &;
+
+		&__item {
+			display: block;
+			margin: $margins 0;
+			cursor: pointer;
+			$root2: &;
+
+				&__image_wrap {
+					position: relative;
+
+						&::after {
+							content: '';
+							position: absolute;
+							left: 0;
+							top: 0;
+							bottom: 0;
+							right: 0;
+							background-color: rgba( 0,0,0, 0.5 );
+							opacity: 0;
+							transition: opacity $transition;
+							z-index: 10;
+						}
+
+						&__expand {
+							$size: 35px;
+							width: $size;
+							height: $size;
+							color: $link_color;
+							position: absolute;
+							left: 50%;
+							top: 50%;
+							transform: translate( -50%, -50% );
+							opacity: 0;
+							transition: opacity $transition;
+							z-index: 20;
+						}
+				}
+
+				&:hover {
+					#{$root2}__image_wrap::after {
+						opacity: 1;
+					}
+					#{$root2}__image_wrap__expand {
+						opacity: 1;
+					}
+				}
+
+				&__image {
+					display: block;
+					width: 100%;
+					height: auto;
+				}
+
+				&__caption {
+					text-align: center;
+					font-size: 14px;
+				}
+		}
+
+		&.is-2-cols {
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+
+				#{$root}__item {
+					flex: 0 0 auto;
+					width: calc( 50% - #{( $margins / 2 )} );
+					margin-bottom: 0;
+
+						&:nth-child( -n + 2 ) {
+							//First two elements dont have margin top - is collapsed from parent
+							margin-top: 0;
 						}
 				}
 		}

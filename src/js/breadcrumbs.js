@@ -15,7 +15,6 @@
 
 		scrollToEnd: function() {
 
-			console.log(this.el.outerWidth( true ));
 			this.el.scrollLeft( 9999 );
 
 		}
