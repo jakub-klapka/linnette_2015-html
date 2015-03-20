@@ -39,6 +39,14 @@ Layout
 	position: relative;
 	width: 100%;
 
+		.no-flexbox & {
+			&::after {
+				content: '';
+				display: table;
+				clear: both;
+			}
+		}
+
 		@include respond-to( 'tablet_wrap' ) {
 			padding-left: $tablet_menu_width;
 		}
@@ -91,6 +99,7 @@ Layout
 .mobile_header {
 	display: none;
 	background: $body_bg;
+	z-index: 100;
 
 		@include respond-to( 'tablet_wrap' ) {
 			display: flex;
@@ -152,13 +161,20 @@ Layout
 }
 
 .main_header {
-	width: 258px; //also in sizes
+	width: $desktop_sidebar_width;
 	flex: 0 0 auto;
 	border-right: 1px solid $separators_color;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: flex-start;
 	padding-top: ( 4 * $base_line_height );
+	z-index: 100;
+
+		.no-flexbox & {
+			float: left;
+			padding-left: 40px;
+		}
 
 		@include respond-to( 'tablet_wrap' ) {
 			display: none;
@@ -182,9 +198,10 @@ Layout
 
 		&__logo {
 			flex: 0 0 auto;
-			width: 70%;
-			height: 0;
-			padding-bottom: ( ( 217/400 ) * 0.7 ) * 100%; //Logo: 400*217px
+			$width: 179px;
+			$height: $width * ( 217 / 400 ); //Logo AR: 400*217px
+			width: $width;
+			height: $height;
 			display: block;
 
 				@include respond-to( 'mobile_wrap' ) {
@@ -196,9 +213,9 @@ Layout
 				}
 
 				&__image {
-					position: absolute;
-					width: 100%;
-					height: 100%;
+					display: block;
+					width: $width;
+					height: $height;
 				}
 		}
 
@@ -248,10 +265,18 @@ Layout
 			width: 70%;
 			height: $base_line_height;
 
+				.no-flexbox & {
+					text-align: center;
+				}
+
 				&__link {
 					color: $text_color;
 					margin: 0 5px;
 					transition: color $transition;
+
+						.no-flexbox & {
+							display: inline-block;
+						}
 
 						&:hover {
 							color: $link_color;
@@ -276,6 +301,12 @@ Layout
 
 .main_content {
 	flex: 0 1 auto;
+	width: 100%;
+
+		.no-flexbox & {
+			float: left;
+			width: calc( 100% - #{($desktop_sidebar_width)} );
+		}
 
 		&__breadcrumbs {
 			display: block;

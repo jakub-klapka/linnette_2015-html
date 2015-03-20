@@ -40,9 +40,12 @@
 				t = this;
 			win.on( 'scroll.linn_mobile_hiding', function(){
 				var current_scroll = win.scrollTop();
+				console.log( prev_scroll + ' ' + current_scroll);
 				if( current_scroll > prev_scroll ) {
+					console.log('hiding');
 					t.hideHeader();
 				} else {
+					console.log('showing');
 					t.showHeader();
 				}
 				prev_scroll = current_scroll;
