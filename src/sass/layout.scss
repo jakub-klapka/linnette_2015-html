@@ -363,42 +363,50 @@ Layout
 				}
 		}
 
+		&__cat_list {
+			padding: ( $base_line_height / 2 ) $base_line_height;
+			font-size: 14px;
+			text-transform: uppercase;
+
+				&__caption {
+					display: inline-block;
+					font-weight: 700;
+					margin-right: $base_line_height / 2;
+				}
+
+				&__item {
+					display: inline-block;
+					color: $text_color;
+					padding: 0 ( $base_line_height / 2 );
+					transition: color $transition;
+
+						&:hover {
+							color: $link_color;
+						}
+
+						&::after {
+							display: none;
+						}
+
+						&.is-active {
+							font-weight: 700;
+							color: $link_color;
+						}
+				}
+		}
+
+		&__featured_image {
+			width: 100%;
+			margin: 0 0 $base_line_height 0;
+		}
+
 		&__typo {
 			padding-left: $base_line_height;
 			padding-right: $base_line_height;
 		}
+
 }
 
-.article_image {
-	display: block;
-	width: 100%;
-	margin: 0 0 $base_line_height 0;
-	position: relative;
-
-		&__image {
-			display: block;
-			width: 100%;
-			height: auto;
-		}
-
-		&__caption {
-			position: absolute;
-			display: block;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			color: $body_bg;
-			font-size: 30px;
-			padding: $base_line_height $base_line_height ( $base_line_height / 2 ) $base_line_height;
-			background-image: linear-gradient( to bottom, rgba( 0,0,0,0 ) 0%, rgba( 0,0,0, 0.5 ) 100% );
-
-				span {
-					font-size: 14px;
-					font-weight: 700;
-					text-transform: uppercase;
-				}
-		}
-}
 
 .article_gallery {
 	$margins: $base_line_height / 2;

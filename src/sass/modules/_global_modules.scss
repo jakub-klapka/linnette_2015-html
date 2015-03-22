@@ -15,3 +15,32 @@
 			vertical-align: middle;
 		}
 }
+
+.captioned_image {
+	display: block;
+	position: relative;
+
+		&__image {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+
+		&__caption {
+			position: absolute;
+			display: block;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			color: $body_bg;
+			font-size: 30px;
+			padding: $base_line_height $base_line_height ( $base_line_height / 2 ) $base_line_height;
+			background-image: linear-gradient( to bottom, rgba( 0,0,0,0 ) 0%, rgba( 0,0,0, 0.5 ) 100% );
+
+				span {
+					font-size: 14px;
+					font-weight: 700;
+					text-transform: uppercase;
+				}
+		}
+}
