@@ -35,25 +35,23 @@
 		},
 
 		bindMobileHiding: function() {
-			var win = $( window ),
-				prev_scroll = 0,
-				t = this;
-			win.on( 'scroll.linn_mobile_hiding', function(){
-				var current_scroll = win.scrollTop();
-				console.log( prev_scroll + ' ' + current_scroll);
-				if( current_scroll > prev_scroll ) {
-					console.log('hiding');
-					t.hideHeader();
-				} else {
-					console.log('showing');
+			var t = this;
+			this.mobile_header.headroom( {
+				onPin: function() {
+					t.showHeader();
+				},
+				onUnpin: function() {
+					t.hideHeader()
+				},
+				onTop: function() {
 					t.showHeader();
 				}
-				prev_scroll = current_scroll;
 			} );
 		},
 
 		unBindMobileHiding: function() {
-			$( window ).off( 'scroll.linn_mobile_hiding' );
+			this.mobile_header.data( 'headroom' ).destroy();
+			this.mobile_header.data( 'headroom', false );
 			this.showHeader();
 		},
 
@@ -91,12 +89,12 @@
 
 				this.mobile_header
 					.velocity( 'stop', true )
-					.attr( 'style', '' )
+					//.attr( 'style', '' )
 					.velocity( 'slideDown', { duration: this.duration, display: 'flex', complete: complete_fnc } );
 
 				this.button
 					.velocity( 'stop', true )
-					.attr( 'style', '' )
+					//.attr( 'style', '' )
 					.velocity( 'slideDown', { duration: this.duration, display: 'block', complete: complete_fnc } );
 			}
 		}
