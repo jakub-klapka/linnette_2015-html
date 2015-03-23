@@ -34,13 +34,40 @@
 			bottom: 0;
 			color: $body_bg;
 			font-size: 30px;
+			line-height: 40px;
 			padding: $base_line_height $base_line_height ( $base_line_height / 2 ) $base_line_height;
 			background-image: linear-gradient( to bottom, rgba( 0,0,0,0 ) 0%, rgba( 0,0,0, 0.5 ) 100% );
+
+				.no-cssgradients & {
+					background: rgba( 0,0,0, 0.5 );
+				}
 
 				span {
 					font-size: 14px;
 					font-weight: 700;
 					text-transform: uppercase;
 				}
+		}
+
+		$root: &;
+
+		&.is-hoverable {
+
+				&::before {
+					content: '';
+					position: absolute;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					top: 0;
+					background: rgba( $link_color, 0.5 );
+					opacity: 0;
+					transition: opacity $transition;
+				}
+
+				&:hover::before {
+					opacity: 1;
+				}
+
 		}
 }

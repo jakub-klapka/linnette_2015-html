@@ -43,5 +43,11 @@ Mixins
 			@content;
 		}
 	}
+	@if( $key == 'max-width' ) {
+		@media only screen and ( max-width: $value ) {
+			@content;
+		}
+	}
+
 
 }

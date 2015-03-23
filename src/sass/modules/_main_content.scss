@@ -1,0 +1,142 @@
+@import "../global";
+
+.main_content {
+	flex: 0 1 auto;
+	width: 100%;
+
+		.no-flexbox & {
+			float: left;
+			width: calc( 100% - #{($desktop_sidebar_width)} );
+		}
+
+		&__breadcrumbs {
+			display: block;
+			width: 100%;
+			overflow: hidden;
+			height: $base_line_height*2;
+
+				&__wrap {
+					overflow-x: auto;
+					padding: ( $base_line_height / 2 ) $base_line_height;
+					white-space: nowrap;
+					padding-bottom: 50px; //Hide scrollbar
+					margin-bottom: -50px;
+				}
+
+				&__item {
+					display: inline-block;
+					color: $text_color;
+					text-transform: uppercase;
+					font-size: 14px;
+					transition: color $transition;
+
+						&::after {
+							content: '>';
+							display: inline-block;
+							position: relative;
+							border: none;
+							left: auto;
+							top: auto;
+							bottom: auto;
+							right: auto;
+							margin-left: 10px;
+							margin-right: 5px;
+							vertical-align: top;
+						}
+
+						&:last-child::after {
+							display: none;
+						}
+
+						&:hover {
+							color: $link_color;
+
+								&::after {
+									opacity: 1;
+								}
+						}
+
+						&.is-active {
+							font-weight: 700;
+							color: $link_color;
+						}
+				}
+		}
+
+		&__cat_list {
+			padding: ( $base_line_height / 2 ) $base_line_height ( $base_line_height / 2 ) ( $base_line_height / 2 );
+			font-size: 14px;
+			text-transform: uppercase;
+
+				&__caption {
+					display: inline-block;
+					font-weight: 700;
+					margin: 0 $base_line_height / 2;
+				}
+
+				&__item {
+					display: inline-block;
+					color: $text_color;
+					padding: 0 ( $base_line_height / 2 );
+					transition: color $transition;
+
+						&:hover {
+							color: $link_color;
+						}
+
+						&::after {
+							display: none;
+						}
+
+						&.is-active {
+							font-weight: 700;
+							color: $link_color;
+						}
+				}
+		}
+
+		&__featured_image {
+			width: 100%;
+			margin: 0 0 $base_line_height 0;
+		}
+
+		&__typo {
+			padding-left: $base_line_height;
+			padding-right: $base_line_height;
+		}
+
+		&__thumb_list {
+			display: flex;
+			flex-wrap: wrap;
+
+				.no-flexbox & {
+					&::after {
+						content: '';
+						clear: both;
+						display: table;
+					}
+				}
+
+				&__item {
+					width: 33.3%;
+
+						.no-flexbox & {
+							float: left;
+						}
+
+						&:after {
+							display: none;
+						}
+
+						@include respond-to( 'max-width', 860px ) {
+							width: 50%;
+						}
+
+						@include respond-to( 'max-width', 580px ) {
+							width: 100%;
+						}
+
+				}
+		}
+
+}

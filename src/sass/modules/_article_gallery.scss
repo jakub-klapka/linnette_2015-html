@@ -1,0 +1,92 @@
+@import "../global";
+
+.article_gallery {
+	$margins: $base_line_height / 2;
+	margin: #{$margins} #{-$margins};
+	$root: &;
+
+		&__item {
+			display: block;
+			margin: $margins 0;
+			cursor: pointer;
+			$root2: &;
+
+				&__image_wrap {
+					position: relative;
+
+						&::after {
+							content: '';
+							position: absolute;
+							left: 0;
+							top: 0;
+							bottom: 0;
+							right: 0;
+							background-color: rgba( 0,0,0, 0.5 );
+							opacity: 0;
+							transition: opacity $transition;
+							z-index: 10;
+						}
+
+						&__expand {
+							$size: 35px;
+							width: $size;
+							height: $size;
+							color: $link_color;
+							position: absolute;
+							left: 50%;
+							top: 50%;
+							transform: translate( -50%, -50% );
+							opacity: 0;
+							transition: opacity $transition;
+							z-index: 20;
+						}
+				}
+
+				&:hover {
+					#{$root2}__image_wrap::after {
+						opacity: 1;
+					}
+					#{$root2}__image_wrap__expand {
+						opacity: 1;
+					}
+				}
+
+				&__image {
+					display: block;
+					width: 100%;
+					height: auto;
+				}
+
+				&__caption {
+					text-align: center;
+					font-size: 14px;
+				}
+		}
+
+		&.is-2-cols {
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+
+				@include respond-to( 'article_gallery_wrap' ) {
+					display: block;
+				}
+
+				#{$root}__item {
+					flex: 0 0 auto;
+					width: calc( 50% - #{( $margins / 2 )} );
+					margin-bottom: 0;
+
+						@include respond-to( 'article_gallery_wrap' ) {
+							width: 100%;
+							margin-bottom: $margins;
+						}
+
+						&:nth-child( -n + 2 ) {
+							//First two elements dont have margin top - is collapsed from parent
+							margin-top: 0;
+						}
+
+				}
+		}
+}
