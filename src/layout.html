@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="cs_CZ">
+<html lang="cs_CZ" itemscope itemtype="https://schema.org/WebPage">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="image" content="images/logo.png"/>
 
-	<title>Linnette 2015</title>
+	<title itemprop="name">Linnette 2015</title>
 
 	<!-- http://www.google.com/fonts/#UsePlace:use/Collection:Open+Sans:300italic,700italic,700,300 -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,700,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
@@ -39,14 +40,14 @@
 
 		<div class="divider" aria-hidden="true"><svg class="divider__image"><use xlink:href="#icon-divider"></use></svg></div>
 
-		<nav class="main_header__nav" role="navigation">
+		<nav class="main_header__nav" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
 			<ul class="main_header__nav__ul">
-				<li class="main_header__nav__ul__item"><a href="">Úvod</a></li>
-				<li class="main_header__nav__ul__item"><a href="">Portfolio</a></li>
-				<li class="main_header__nav__ul__item"><a href="">Retuše</a></li>
-				<li class="main_header__nav__ul__item"><a href="">Reference</a></li>
-				<li class="main_header__nav__ul__item"><a href="">Autor</a></li>
-				<li class="main_header__nav__ul__item"><a href="">Kontakt</a></li>
+				<li class="main_header__nav__ul__item"><a href="" itemprop="name url">Úvod</a></li>
+				<li class="main_header__nav__ul__item"><a href="" itemprop="name url">Portfolio</a></li>
+				<li class="main_header__nav__ul__item"><a href="" itemprop="name url">Retuše</a></li>
+				<li class="main_header__nav__ul__item"><a href="" itemprop="name url">Reference</a></li>
+				<li class="main_header__nav__ul__item"><a href="" itemprop="name url">Autor</a></li>
+				<li class="main_header__nav__ul__item"><a href="" itemprop="name url">Kontakt</a></li>
 			</ul>
 		</nav>
 
@@ -63,27 +64,28 @@
 
 	</header>
 
-	<article class="main_content" role="main">
+	<article class="main_content" role="main" itemprop="mainContentOfPage">
 
 		<nav class="main_content__breadcrumbs" data-js-breadcrumbs>
-			<div class="main_content__breadcrumbs__wrap">
-				<a class="main_content__breadcrumbs__item" href="">Portfolio</a>
-				<a class="main_content__breadcrumbs__item" href="">Portfolio</a>
-				<a class="main_content__breadcrumbs__item" href="">Cestování</a>
-				<a class="main_content__breadcrumbs__item" href="">Cestování</a>
-				<a class="main_content__breadcrumbs__item is-active" href="">Zatopený lom</a>
+			<div class="main_content__breadcrumbs__wrap" itemprop="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+				<a class="main_content__breadcrumbs__item" href="" itemprop="itemListElement">Portfolio</a>
+				<a class="main_content__breadcrumbs__item" href="" itemprop="itemListElement">Portfolio</a>
+				<a class="main_content__breadcrumbs__item" href="" itemprop="itemListElement">Cestování</a>
+				<a class="main_content__breadcrumbs__item" href="" itemprop="itemListElement">Cestování</a>
+				<a class="main_content__breadcrumbs__item is-active" href="" itemprop="itemListElement">Zatopený lom</a>
 			</div>
 		</nav>
 
-		<figure class="main_content__featured_image captioned_image">
+		<figure class="main_content__featured_image captioned_image" itemprop="primaryImageOfPage" itemscope itemtype="https://schema.org/ImageObject">
 			<img alt="Zatopený lom"
 			     srcset="sample_content/zatopeny_lom_1023.jpg 1023w,
 			            sample_content/zatopeny_lom_800.jpg 800w,
 			            sample_content/zatopeny_lom_400.jpg 400w"
 				 sizes="(min-width: 1280px) 1022px, (min-width: 1024px) calc( 100% - 228px ), 100vw"
 				 width="3000" height="2000"
-				 class="captioned_image__image"/>
-			<figcaption class="captioned_image__caption">Zatopený lom<br/><span>Cestování</span></figcaption>
+				 class="captioned_image__image"
+				 itemprop="image"/>
+			<figcaption class="captioned_image__caption" itemprop="caption">Zatopený lom<br/><span>Cestování</span></figcaption>
 		</figure>
 
 		<div class="main_content__typo">
@@ -102,17 +104,19 @@
 				laboriosam magni nesciunt pariatur perspiciatis possimus reprehenderit soluta sunt voluptate. Commodi
 				eos ex, illum iure maiores soluta velit veritatis!</p>
 
-			<div class="article_gallery is-2-cols">
-				<figure class="article_gallery__item">
+			<div class="article_gallery is-2-cols" itemscope itemtype="https://schema.org/ImageGallery">
+				<figure class="article_gallery__item" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
 					<div class="article_gallery__item__image_wrap">
 						<img class="article_gallery__item__image"
 						     alt="Bez captionu"
 						     srcset="sample_content/sample_portrait_488.jpg 488w"
 						     sizes="(min-width: 1280px) 490px, (min-width: 800px) 50vw, 100vw"
 						     width="3000" height="2000"
-							 data-url="sample_content/sample_portrait_488.jpg" data-width="488" data-height="731"/>
+							 data-url="sample_content/sample_portrait_488.jpg" data-width="488" data-height="731"
+							 itemprop="image" />
 						<svg class="article_gallery__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
 					</div>
+					<figcaption class="article_gallery__item__caption" itemprop="caption">Popis obrázku</figcaption>
 				</figure>
 				<figure class="article_gallery__item">
 					<div class="article_gallery__item__image_wrap">

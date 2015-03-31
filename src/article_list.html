@@ -64,21 +64,24 @@
 
 	<section class="main_content" role="main">
 
-		<nav class="main_content__cat_list">
+		<nav class="main_content__cat_list" itemscope itemtype="https://schema.org/SiteNavigationElement">
 			<div class="main_content__cat_list__caption">Kategorie:</div>
-			<a class="main_content__cat_list__item" href="">Portfolio</a>
-			<a class="main_content__cat_list__item" href="">Cestování</a>
-			<a class="main_content__cat_list__item is-active" href="">Zatopený lom</a>
+			<a class="main_content__cat_list__item" href="" itemprop="name url">Portfolio</a>
+			<a class="main_content__cat_list__item" href="" itemprop="name url">Cestování</a>
+			<a class="main_content__cat_list__item is-active" href="" itemprop="name url">Zatopený lom</a>
 		</nav>
 
 		<div class="main_content__thumb_list">
-			<a href="" class="main_content__thumb_list__item captioned_image is-hoverable">
+			<a href="" class="main_content__thumb_list__item captioned_image is-hoverable" itemscope itemtype="https://schema.org/Article">
+				<meta itemprop="url" content="http://www.linnette.cz"/>
+				<meta itemprop="name" content="Zatopený lom"/>
 				<!-- max width: 503px -->
 				<img alt="Zatopený lom"
 				     srcset="sample_content/aticle_list.jpg 341w"
 				     sizes="(max-width: 580px) 100vw, (max-width: 860px) 50vw, (max-width: 1024px) 34vw, (max-width: 1297px) calc( ( 100vw - 258px ) / 3 ), 341px"
 				     width="341" height="341"
-				     class="captioned_image__image"/>
+				     class="captioned_image__image"
+					 itemprop="image" />
 				<div class="captioned_image__caption">Zatopený lom<br/><span>Cestování</span></div>
 			</a>
 			<a href="" class="main_content__thumb_list__item captioned_image is-hoverable">

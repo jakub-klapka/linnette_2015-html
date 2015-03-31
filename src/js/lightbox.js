@@ -3,7 +3,7 @@
 
 	$( function(){
 
-		var figures = $( '.article_gallery figure' );
+		var figures = $( '.article_gallery figure, .images_list .images_list__item' );
 
 		figures.on( 'click', function(){
 

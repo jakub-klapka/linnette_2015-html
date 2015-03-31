@@ -6,56 +6,9 @@
 	$root: &;
 
 		&__item {
-			display: block;
 			margin: $margins 0;
 			cursor: pointer;
-			$root2: &;
-
-				&__image_wrap {
-					position: relative;
-
-						&::after {
-							content: '';
-							position: absolute;
-							left: 0;
-							top: 0;
-							bottom: 0;
-							right: 0;
-							background-color: rgba( 0,0,0, 0.5 );
-							opacity: 0;
-							transition: opacity $transition;
-							z-index: 10;
-						}
-
-						&__expand {
-							$size: 35px;
-							width: $size;
-							height: $size;
-							color: $link_color;
-							position: absolute;
-							left: 50%;
-							top: 50%;
-							transform: translate( -50%, -50% );
-							opacity: 0;
-							transition: opacity $transition;
-							z-index: 20;
-						}
-				}
-
-				&:hover {
-					#{$root2}__image_wrap::after {
-						opacity: 1;
-					}
-					#{$root2}__image_wrap__expand {
-						opacity: 1;
-					}
-				}
-
-				&__image {
-					display: block;
-					width: 100%;
-					height: auto;
-				}
+			@include hoverable_image();
 
 				&__caption {
 					text-align: center;

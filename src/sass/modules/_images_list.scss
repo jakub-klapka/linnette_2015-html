@@ -1,0 +1,34 @@
+@import "../global";
+
+.images_list {
+	display: flex;
+	flex-wrap: wrap;
+
+		.no-flexbox & {
+			display: block;
+
+				&::after {
+					content: '';
+					display: table;
+					clear: both;
+				}
+		}
+
+		&__item {
+			@include hoverable_image();
+			display: flex;
+			flex: 0 0 25%;
+			margin: 0;
+
+				@include respond-to( 'max-width', 730px ) { //also in sizes
+					flex-basis: 50%;
+				}
+
+				.no-flexbox & {
+					display: block;
+					width: 25%;
+					float: left;
+				}
+		}
+
+}
