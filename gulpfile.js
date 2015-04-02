@@ -9,7 +9,7 @@ var gulp = require('gulp'),
 	rename = require('gulp-rename'),
 //	replace = require('gulp-replace'),
 //	concat = require('gulp-concat'),
-//	uglify = require('gulp-uglify'),
+	uglify = require('gulp-uglify'),
 //	html_replace = require('gulp-html-replace'),
 	gulpFilter = require('gulp-filter' );
 //	gulpsync = require('gulp-sync')(gulp);
@@ -96,42 +96,16 @@ gulp.task( 'svg_sprite_watch', function(){
 } );
 
 
-/*
-HTML process
- */
-//gulp.task( 'html', function() {
-//	return gulp.src( 'src/index.html' )
-//		.pipe( plumber( plumber_config ) )
-//		.pipe( html_replace( {
-//			layout: 'css/layout.css',
-//			js: 'js/scripts.js'
-//		} ) )
-//		.pipe( replace( '../dist/images/svg_sprite.svg', 'images/svg_sprite.svg' ) )
-//		.pipe( gulp.dest( 'dist' ) );
-//} );
-
 
 /*
 JS compile
  */
-//gulp.task( 'js', function() {
-//	var html = require( 'fs' ).readFileSync( './src/index.html', { encoding: 'utf-8' } );
-//	var scripts_re = /<!-- build:js -->([\s\S]*?)<!-- endbuild -->/g;
-//	var scripts = scripts_re.exec( html );
-//	scripts = scripts[1];
-//
-//	var src_re = /src="(.+?)"/g;
-//	var src = [];
-//	while( one = src_re.exec( scripts ) ) {
-//		src.push( 'src/' + one[1] );
-//	}
-//
-//	return gulp.src( src )
-//		.pipe( plumber( plumber_config ) )
-//		.pipe( concat( 'scripts.js' ) )
-//		.pipe( uglify() )
-//		.pipe( gulp.dest( 'dist/js' ) );
-//} );
+gulp.task( 'js', function() {
+	return gulp.src( 'src/js/**/*.js', { base: 'src/js' } )
+		.pipe( plumber( plumber_config ) )
+		.pipe( uglify() )
+		.pipe( gulp.dest( 'dist/js' ) );
+} );
 
 
 /*
@@ -148,5 +122,5 @@ gulp.task( 'livereload', function(){
 /*
 Tasks
  */
-gulp.task( 'default', [ 'sass', 'images', 'svg_sprite' ] );
+gulp.task( 'default', [ 'sass', 'images', 'svg_sprite', 'js' ] );
 gulp.task( 'dev', [ 'sass_watch', 'livereload', 'images_watch', 'svg_sprite_watch' ] );
