@@ -1,20 +1,30 @@
 @import "../global";
 
-body {
-	font-size: $base_font_size;
-	line-height: $base_line_height;
-	font-weight: 300;
-	font-family: $base_font_family;
-}
+@mixin typo( $add_body_id: false ) {
 
-strong {
-	font-weight: 700;
-}
+	$body_selector: body;
+	@if $add_body_id {
+		$body_selector: &;
+	}
 
-a {
-	color: $link_color;
-	text-decoration: none;
-	position: relative;
+	@at-root {
+		#{$body_selector} {
+			font-size: $base_font_size;
+			line-height: $base_line_height;
+			font-weight: 300;
+			font-family: $base_font_family;
+		}
+	}
+
+
+	strong {
+		font-weight: 700;
+	}
+
+	a {
+		color: $link_color;
+		text-decoration: none;
+		position: relative;
 
 		&::after {
 			content: '';
@@ -32,67 +42,69 @@ a {
 		&:hover::after {
 			opacity: 0;
 		}
-}
+	}
 
-h1, h2, h3, h4, h5, h6, p, ul, ol, blockquote, code {
-	margin: $base_line_height 0;
-}
+	h1, h2, h3, h4, h5, h6, p, ul, ol, blockquote, code {
+		margin: $base_line_height 0;
+	}
 
-h1, h2, h3, h4, h5, h6 {
-	line-height: $base_line_height;
-	font-weight: inherit;
-}
+	h1, h2, h3, h4, h5, h6 {
+		line-height: $base_line_height;
+		font-weight: inherit;
+	}
 
-h1 {
-	font-size: 30px;
-}
+	h1 {
+		font-size: 30px;
+	}
 
-h2 {
-	font-size: 24px;
-}
+	h2 {
+		font-size: 24px;
+	}
 
-h3 {
-	font-size: 18px;
-	font-weight: 700;
-}
+	h3 {
+		font-size: 18px;
+		font-weight: 700;
+	}
 
-h4 {
-	font-size: 14px;
-	font-weight: 700;
-}
+	h4 {
+		font-size: 14px;
+		font-weight: 700;
+	}
 
-ul {
-	list-style: none;
+	ul {
+		list-style: none;
 
 		li {
 			position: relative;
 
-				&::after {
-					$size: 4px;
-					content: '';
-					position: absolute;
-					left: -0.7em;
-					top: 0.7em;
-					display: block;
-					width: $size;
-					height: $size;
-					border-radius: 100%;
-					background: $highlight_color;
-				}
+			&::after {
+				$size: 4px;
+				content: '';
+				position: absolute;
+				left: -0.7em;
+				top: 0.7em;
+				display: block;
+				width: $size;
+				height: $size;
+				border-radius: 100%;
+				background: $highlight_color;
+			}
 		}
-}
+	}
 
-ol {
-	list-style: none;
+	ol {
+		list-style: none;
 
 		li {
 			counter-increment: ol;
 
-				&::before {
-					content: counter(ol ,decimal) '.';
-					position: absolute;
-					margin-left: -1em;
-					color: $highlight_color;
-				}
+			&::before {
+				content: counter(ol ,decimal) '.';
+				position: absolute;
+				margin-left: -1em;
+				color: $highlight_color;
+			}
 		}
+	}
+
 }

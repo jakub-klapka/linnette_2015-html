@@ -23,6 +23,7 @@ html {
 Typography
 */
 @import "modules/typo";
+@include typo();
 
 /*
 Global modules
