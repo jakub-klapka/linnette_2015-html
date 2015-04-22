@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="cs_CZ" itemscope itemtype="https://schema.org/WebPage">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="image" content="images/logo.png"/>
+
+	<title itemprop="name">Linnette 2015</title>
+
+	<!-- http://www.google.com/fonts/#UsePlace:use/Collection:Open+Sans:300italic,700italic,700,300 -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,700,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../dist/css/layout.css"/>
+	<link rel="stylesheet" href="../dist/css/lightbox.css"/>
+
+	<script>
+		var ajax = new XMLHttpRequest();
+		ajax.open("GET", "../dist/images/svg_sprite.svg", true);
+		ajax.send();
+		ajax.onload = function(e) {
+			var div = document.createElement("div");
+			div.style.display = 'none';
+			div.innerHTML = ajax.responseText;
+			document.body.insertBefore(div, document.body.childNodes[0]);
+		}
+	</script>
+</head>
+<body>
+
+<div class="page_wrap">
+
+	<button class="mobile_menu_button" aria-controls="main_header" data-js-menu_button><svg aria-label="Otevřít menu"><use xlink:href="#icon-menu"></use></svg></button>
+
+	<aside class="mobile_header" data-js-mobile_header>
+		<a href="" class="mobile_header__logo"><svg aria-label="Linnette Logo"><use xlink:href="#icon-logo_mobile"></use></svg></a>
+	</aside>
+
+	<header class="main_header" role="banner" id="main_header" data-js-main_header>
+
+		<a class="main_header__logo" href=""><svg class="main_header__logo__image" aria-label="Linnette Logo"><use xlink:href="#icon-logo"></use></svg></a>
+
+		<div class="divider" aria-hidden="true"><svg class="divider__image"><use xlink:href="#icon-divider"></use></svg></div>
+
+		<nav class="main_header__nav" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+			<ul class="main_header__nav__ul">
+				<li class="main_header__nav__ul__item"><a href="" itemprop="name url">Úvod</a></li>
+				<li class="main_header__nav__ul__item"><a href="" itemprop="name url">Portfolio</a></li>
+				<li class="main_header__nav__ul__item"><a href="" itemprop="name url">Retuše</a></li>
+				<li class="main_header__nav__ul__item"><a href="" itemprop="name url">Reference</a></li>
+				<li class="main_header__nav__ul__item"><a href="" itemprop="name url">Autor</a></li>
+				<li class="main_header__nav__ul__item"><a href="" itemprop="name url">Kontakt</a></li>
+			</ul>
+		</nav>
+
+		<div class="divider" aria-hidden="true"><svg class="divider__image"><use xlink:href="#icon-divider"></use></svg></div>
+
+		<nav class="main_header__socials">
+			<a class="main_header__socials__link" href=""><svg class="main_header__socials__link__image" aria-label="Facebook"><use xlink:href="#icon-facebook"></use></svg></a>
+			<a class="main_header__socials__link" href=""><svg class="main_header__socials__link__image" aria-label="Instagram"><use xlink:href="#icon-instagram"></use></svg></a>
+		</nav>
+
+		<div class="divider" aria-hidden="true"><svg class="divider__image"><use xlink:href="#icon-divider"></use></svg></div>
+
+		<div class="main_header__copyright">&copy; 2015 Linnette.cz</div>
+
+	</header>
+
+	<article class="main_content" role="main" itemprop="mainContentOfPage">
+
+		<div class="main_content__typo">
+			<h1>Napište mi</h1>
+
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque autem consequatur consequuntur deserunt
+				eligendi, iure libero nemo repellat ut voluptates. Beatae culpa cupiditate dicta incidunt ipsa iure
+				neque nihil quo.</p>
+
+
+			<form class="form" action="" data-js-form>
+
+				<div class="form__input_wrap">
+					<label class="form__label" for="jmeno">Jméno:</label>
+					<input class="form__input" type="text" id="jmeno" required/>
+				</div>
+
+				<div class="form__input_wrap">
+					<label class="form__label" for="email">E-mail:</label>
+					<input class="form__input" type="email" id="email"/>
+				</div>
+
+				<div class="form__input_wrap">
+					<label class="form__label" for="zprava">Zpráva:</label>
+					<textarea class="form__input is-textarea" name="zprava" id="zprava" required="required"></textarea>
+				</div>
+
+				<div class="form__input_wrap is-submit">
+					<button type="submit" class="form__submit">Odeslat</button>
+				</div>
+
+			</form>
+
+		</div>
+
+	</article>
+
+</div>
+
+
+<script src="js/libs/modernizr.js"></script>
+
+<script src="js/libs/jquery-2.1.3.js"></script>
+<script src="js/libs/velocity.js"></script> <!-- jq -->
+<script src="js/libs/enquire.js"></script>
+<script src="js/libs/headroom.js"></script>
+<script src="js/libs/jQuery.headroom.js"></script> <!-- jq, headroom -->
+<script src="js/menu.js"></script> <!-- jq, velocity, enquire, headroom -->
+
+<script src="js/libs/autosize.js"></script>
+<script src="js/form.js"></script><!-- jq, autosize -->
+
+</body>
+</html>
