@@ -6,7 +6,7 @@
 
 		.no-flexbox & {
 			float: left;
-			width: calc( 100% - #{($desktop_sidebar_width)} );
+			width: 100%;
 		}
 
 		&__breadcrumbs {
