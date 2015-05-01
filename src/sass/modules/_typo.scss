@@ -107,4 +107,11 @@
 		}
 	}
 
+	blockquote {
+		margin: 0;
+		padding: 0;
+		border-left: 4px solid $highlight_color;
+		padding-left: 1em;
+	}
+
 }
