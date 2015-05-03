@@ -1,0 +1,11 @@
+@import "../global";
+
+.fb_share_area {
+	height: $base_line_height;
+	overflow: hidden;
+	display: block;
+
+		&.is-content {
+			margin-left: $base_line_height;
+		}
+}
