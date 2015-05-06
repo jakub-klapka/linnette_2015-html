@@ -3,7 +3,6 @@
 .main_content {
 	flex: 0 1 auto;
 	width: 100%;
-	margin-bottom: $base_line_height;
 
 		.no-flexbox & {
 			float: left;
@@ -102,8 +101,7 @@
 		}
 
 		&__typo {
-			padding-left: $base_line_height;
-			padding-right: $base_line_height;
+			padding: 0 $base_line_height $base_line_height $base_line_height;
 		}
 
 		&__thumb_list {
