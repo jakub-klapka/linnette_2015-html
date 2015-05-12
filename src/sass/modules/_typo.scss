@@ -117,4 +117,11 @@
 		padding-left: 1em;
 	}
 
+	.oembed_object {
+		margin-left: -( $base_line_height / 2 );
+		margin-right: -( $base_line_height / 2 );
+		margin-top: $base_line_height;
+		margin-bottom: $base_line_height;
+	}
+
 }
