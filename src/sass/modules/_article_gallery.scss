@@ -42,4 +42,38 @@
 
 				}
 		}
+
+		$root: &;
+		&.is-1_2 {
+			display: flex;
+			position: relative;
+
+				#{$root}__column {
+					flex: 1 1 auto;
+
+						&:first-child {
+							margin-right: $base_line_height / 4;
+						}
+						&:last-child {
+							margin-left: $base_line_height / 4;
+						}
+
+						&.has-two_images {
+
+							#{$root}__item {
+								overflow: hidden;
+
+								&__image {
+									margin-top: -( $base_line_height / 8 );
+									margin-bottom: -( $base_line_height / 8 );
+								}
+
+							}
+
+
+						}
+
+				}
+
+		}
 }
