@@ -1,6 +1,6 @@
 /*!
  * modernizr v3.0.0-alpha.3
- * Build http://v3.modernizr.com/download/#-cssgradients-flexbox-dontmin
+ * Build http://v3.modernizr.com/download/#-cssgradients-flexbox-flexboxtweener-dontmin
  *
  * Copyright (c)
  *  Faruk Ates
@@ -185,6 +185,70 @@
 
   ;
 
+  // List of property values to set for css tests. See ticket #21
+  var prefixes = (ModernizrProto._config.usePrefixes ? ' -webkit- -moz- -o- -ms- '.split(' ') : []);
+
+  // expose these for the plugin API. Look in the source for how to join() them against your input
+  ModernizrProto._prefixes = prefixes;
+
+  
+
+  var createElement = function() {
+    if (typeof document.createElement !== 'function') {
+      // This is the case in IE7, where the type of createElement is "object".
+      // For this reason, we cannot call apply() as Object is not a Function.
+      return document.createElement(arguments[0]);
+    } else {
+      return document.createElement.apply(document, arguments);
+    }
+  };
+  
+/*!
+{
+  "name": "CSS Gradients",
+  "caniuse": "css-gradients",
+  "property": "cssgradients",
+  "tags": ["css"],
+  "knownBugs": ["False-positives on webOS (https://github.com/Modernizr/Modernizr/issues/202)"],
+  "notes": [{
+    "name": "Webkit Gradient Syntax",
+    "href": "http://webkit.org/blog/175/introducing-css-gradients/"
+  },{
+    "name": "Mozilla Linear Gradient Syntax",
+    "href": "http://developer.mozilla.org/en/CSS/-moz-linear-gradient"
+  },{
+    "name": "Mozilla Radial Gradient Syntax",
+    "href": "http://developer.mozilla.org/en/CSS/-moz-radial-gradient"
+  },{
+    "name": "W3C Gradient Spec",
+    "href": "dev.w3.org/csswg/css3-images/#gradients-"
+  }]
+}
+!*/
+
+
+  Modernizr.addTest('cssgradients', function() {
+
+    var str1 = 'background-image:';
+    var str2 = 'gradient(linear,left top,right bottom,from(#9f9),to(white));';
+    var str3 = 'linear-gradient(left top,#9f9, white);';
+
+    // standard syntax             // trailing 'background-image:'
+    var css = str1 + prefixes.join(str3 + str1).slice(0, -str1.length);
+    if (Modernizr._config.usePrefixes) {
+    // legacy webkit syntax (FIXME: remove when syntax not in use anymore)
+      css += str1 + '-webkit-' + str2;
+    }
+
+    var elem = createElement('div');
+    var style = elem.style;
+    style.cssText = css;
+
+    // IE6 returns undefined so cast to string
+    return ('' + style.backgroundImage).indexOf('gradient') > -1;
+  });
+
+
   // Following spec is to expose vendor-specific style properties as:
   //   elem.style.WebkitBorderRadius
   // and the following would be incorrect:
@@ -214,17 +278,6 @@
   }
 
   ;
-
-  var createElement = function() {
-    if (typeof document.createElement !== 'function') {
-      // This is the case in IE7, where the type of createElement is "object".
-      // For this reason, we cannot call apply() as Object is not a Function.
-      return document.createElement(arguments[0]);
-    } else {
-      return document.createElement.apply(document, arguments);
-    }
-  };
-  
 
   // Helper function for converting kebab-case to camelCase,
   // e.g. box-sizing -> boxSizing
@@ -576,58 +629,21 @@ Detects support for the Flexible Box Layout model, a.k.a. Flexbox, which allows 
 
   Modernizr.addTest('flexbox', testAllProps('flexBasis', '1px', true));
 
-
-  // List of property values to set for css tests. See ticket #21
-  var prefixes = (ModernizrProto._config.usePrefixes ? ' -webkit- -moz- -o- -ms- '.split(' ') : []);
-
-  // expose these for the plugin API. Look in the source for how to join() them against your input
-  ModernizrProto._prefixes = prefixes;
-
-  
 /*!
 {
-  "name": "CSS Gradients",
-  "caniuse": "css-gradients",
-  "property": "cssgradients",
+  "name": "Flexbox (tweener)",
+  "property": "flexboxtweener",
   "tags": ["css"],
-  "knownBugs": ["False-positives on webOS (https://github.com/Modernizr/Modernizr/issues/202)"],
+  "polyfills": ["flexie"],
   "notes": [{
-    "name": "Webkit Gradient Syntax",
-    "href": "http://webkit.org/blog/175/introducing-css-gradients/"
-  },{
-    "name": "Mozilla Linear Gradient Syntax",
-    "href": "http://developer.mozilla.org/en/CSS/-moz-linear-gradient"
-  },{
-    "name": "Mozilla Radial Gradient Syntax",
-    "href": "http://developer.mozilla.org/en/CSS/-moz-radial-gradient"
-  },{
-    "name": "W3C Gradient Spec",
-    "href": "dev.w3.org/csswg/css3-images/#gradients-"
-  }]
+    "name": "The _inbetween_ flexbox",
+    "href": "http://www.w3.org/TR/2011/WD-css3-flexbox-20111129/"
+  }],
+  "warnings": ["This represents an old syntax, not the latest standard syntax."]
 }
 !*/
 
-
-  Modernizr.addTest('cssgradients', function() {
-
-    var str1 = 'background-image:';
-    var str2 = 'gradient(linear,left top,right bottom,from(#9f9),to(white));';
-    var str3 = 'linear-gradient(left top,#9f9, white);';
-
-    // standard syntax             // trailing 'background-image:'
-    var css = str1 + prefixes.join(str3 + str1).slice(0, -str1.length);
-    if (Modernizr._config.usePrefixes) {
-    // legacy webkit syntax (FIXME: remove when syntax not in use anymore)
-      css += str1 + '-webkit-' + str2;
-    }
-
-    var elem = createElement('div');
-    var style = elem.style;
-    style.cssText = css;
-
-    // IE6 returns undefined so cast to string
-    return ('' + style.backgroundImage).indexOf('gradient') > -1;
-  });
+  Modernizr.addTest('flexboxtweener', testAllProps('flexAlign', 'end', true));
 
 
   // Run each test

@@ -4,7 +4,7 @@
 	display: flex;
 	flex-wrap: wrap;
 
-		.no-flexbox & {
+		.no-flexboxtweener & {
 			display: block;
 
 				&::after {
@@ -24,7 +24,7 @@
 					flex-basis: 50%;
 				}
 
-				.no-flexbox & {
+				.no-flexboxtweener & {
 					display: block;
 					width: 25%;
 					float: left;
