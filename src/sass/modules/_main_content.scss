@@ -4,7 +4,7 @@
 	flex: 0 1 auto;
 	width: 100%;
 
-		.no-flexbox & {
+		.no-flexboxtweener & {
 			float: left;
 			width: 100%;
 		}
@@ -108,7 +108,7 @@
 			display: flex;
 			flex-wrap: wrap;
 
-				.no-flexbox & {
+				.no-flexboxtweener & {
 					&::after {
 						content: '';
 						clear: both;
@@ -119,7 +119,7 @@
 				&__item {
 					width: 33.3%;
 
-						.no-flexbox & {
+						.no-flexboxtweener & {
 							float: left;
 						}
 

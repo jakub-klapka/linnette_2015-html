@@ -210,7 +210,7 @@
 			width: 70%;
 			height: $base_line_height;
 
-				.no-flexbox & {
+				.no-flexboxtweener & {
 					text-align: center;
 				}
 
@@ -219,7 +219,7 @@
 					margin: 0 5px;
 					transition: color $transition;
 
-						.no-flexbox & {
+						.no-flexboxtweener & {
 							display: inline-block;
 						}
 

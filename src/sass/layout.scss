@@ -41,7 +41,7 @@ Layout
 	width: 100%;
 	padding-left: $desktop_sidebar_width;
 
-		.no-flexbox & {
+		.no-flexboxtweener & {
 			&::after {
 				content: '';
 				display: table;

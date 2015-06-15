@@ -42,4 +42,84 @@
 
 				}
 		}
+
+		$root: &;
+		&.is-1_2 {
+			display: flex;
+			position: relative;
+
+				#{$root}__item {
+					margin-top: 0;
+					margin-bottom: 0;
+				}
+
+				#{$root}__column {
+					flex: 1 1 auto;
+					position: relative;
+
+						&:first-child,
+						&:last-child {
+
+								&::after {
+									content: '';
+									position: absolute;
+									right: 0;
+									top: 0;
+									bottom: 0;
+									width: ( $base_line_height / 4 );
+									background: $body_bg;
+									z-index: 100;
+
+										@include respond-to( 'article_gallery_wrap' ) {
+											display: none;
+										}
+								}
+
+						}
+
+						&:last-child {
+								&::after {
+									right: auto;
+									left: 0;
+								}
+						}
+
+						&:first-child {
+							@include respond-to( 'article_gallery_wrap' ) {
+								margin-bottom: $margins;
+							}
+						}
+
+						&.has-two_images {
+
+							#{$root}__item {
+								overflow: hidden;
+
+								&:first-of-type {
+									margin-bottom: $base_line_height / 2;
+								}
+
+								&__image {
+									margin-top: -( $base_line_height / 8 );
+									margin-bottom: -( $base_line_height / 8 );
+								}
+
+							}
+
+
+						}
+
+						@include respond-to( 'article_gallery_wrap' ) {
+							max-width: 100%;
+							flex-shrink: 0;
+							flex-grow: 0;
+						}
+
+				}
+
+				@include respond-to( 'article_gallery_wrap' ) {
+					flex-wrap: wrap;
+				}
+
+		}
 }
