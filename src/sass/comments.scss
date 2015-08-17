@@ -1,0 +1,52 @@
+@import "_global";
+
+.comments {
+
+	&__form {
+		margin-bottom: $base_line_height;
+	}
+
+	&__item {
+		padding-top: $base_line_height;
+		border-color: $separators_color;
+		border-width: 1px;
+		border-style: solid none none none;
+
+		display: flex;
+		align-items: flex-start;
+
+			&__avatar {
+				flex: 0 0 auto;
+				margin-right: $base_line_height;
+				margin-bottom: $base_line_height;
+			}
+
+			&__content {
+
+				&__heading {
+					font-size: $base_font_size - 4;
+
+						&__date {
+							font-style: italic;
+						}
+
+						@include respond-to( 'comments_wrap' ) {
+							text-align: center;
+						}
+				}
+
+			}
+
+			@include respond-to( 'comments_wrap' ) {
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.comments__item {
+				@include respond-to( 'comments_wrap' ) {
+					padding-left: $base_line_height;
+				}
+			}
+	}
+
+}

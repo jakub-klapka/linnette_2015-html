@@ -5,6 +5,11 @@
 	display: block;
 	margin: 0 auto;
 
+		&.is-left_aligned {
+			margin-left: 0;
+			margin-right: 0;
+		}
+
 		$side_margins: $base_line_height / 2;
 
 		&__input_wrap {
@@ -20,6 +25,15 @@
 			margin-left: $side_margins;
 			font-weight: bold;
 			font-size: 14px;
+		}
+
+		&__input_note {
+			display: block;
+			margin-left: $side_margins;
+			font-size: 13px;
+			line-height: $base_line_height / 2;
+			font-style: italic;
+			margin-bottom: $base_line_height / 2;
 		}
 
 		&__input {
@@ -69,5 +83,9 @@
 				&:hover {
 					color: $link_color;
 				}
+		}
+
+		&__hidden {
+			display: none;
 		}
 }

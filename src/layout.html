@@ -11,6 +11,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,700,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="../dist/css/layout.css"/>
 	<link rel="stylesheet" href="../dist/css/lightbox.css"/>
+	<link rel="stylesheet" href="../dist/css/comments.css"/>
 
 	<script>
 		var ajax = new XMLHttpRequest();
@@ -338,6 +339,139 @@
 				<!--}(document, 'script', 'facebook-jssdk'));</script>-->
 			</div>
 
+			<section class="comments">
+
+				<h2 class="comments__heading">Komentáře</h2>
+
+				<form action="" class="comments__form form is-left_aligned">
+
+					<div class="form__input_wrap">
+						<label class="form__label" for="zprava">Napište mi komentář:</label>
+						<textarea class="form__input is-textarea" name="zprava" id="zprava" required="required" data-js-hidden_source="comments"></textarea>
+					</div>
+
+					<div class="form__hidden" data-js-hidden_target="comments">
+
+						<div class="form__input_wrap">
+							<label class="form__label" for="jmeno">Jméno:</label>
+							<input class="form__input" type="text" id="jmeno" required/>
+						</div>
+
+						<div class="form__input_wrap">
+							<label class="form__label" for="email">E-mail:</label>
+							<div class="form__input_note">Na e-mail vám budou chodit upozornění na nové zprávy. Váš e-mail nebudeme nikde veřejně zobrazovat.</div>
+							<input class="form__input" type="email" id="email"/>
+						</div>
+
+
+
+						<div class="form__input_wrap is-submit">
+							<button type="submit" class="form__submit">Odeslat</button>
+						</div>
+
+					</div>
+
+				</form>
+				
+				<div class="comments__item">
+					<img src="//placehold.it/50x50" alt="" class="comments__item__avatar">
+					<div class="comments__item__content">
+						<div class="comments__item__content__heading">
+							<time class="comments__item__content__heading__date">10. 10. 2015</time>
+							od <strong>Nikolky Bruncové</strong>
+						</div>
+						<div class="comments__item__content__message">
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur doloremque eaque
+								eius, enim expedita impedit incidunt quas? Adipisci architecto blanditiis commodi
+								doloremque excepturi, magni maiores mollitia non porro suscipit velit?</p>
+
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa cum, dignissimos
+								exercitationem fugit ipsa magni, quam quibusdam sit temporibus ullam unde vero.
+								Distinctio dolore doloremque dolorum illo in incidunt vero!</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="comments__item">
+					<img src="//placehold.it/50x50" alt="" class="comments__item__avatar">
+					<div class="comments__item__content">
+						<div class="comments__item__content__heading">
+							<time class="comments__item__content__heading__date">10. 10. 2015</time>
+							od <strong>Nikolky Bruncové</strong>
+						</div>
+						<div class="comments__item__content__message">
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur doloremque eaque
+								eius, enim expedita impedit incidunt quas? Adipisci architecto blanditiis commodi
+								doloremque excepturi, magni maiores mollitia non porro suscipit velit?</p>
+
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa cum, dignissimos
+								exercitationem fugit ipsa magni, quam quibusdam sit temporibus ullam unde vero.
+								Distinctio dolore doloremque dolorum illo in incidunt vero!</p>
+						</div>
+
+						<div class="comments__item">
+							<img src="//placehold.it/50x50" alt="" class="comments__item__avatar">
+							<div class="comments__item__content">
+								<div class="comments__item__content__heading">
+									<time class="comments__item__content__heading__date">10. 10. 2015</time>
+									od <strong>Nikolky Bruncové</strong>
+								</div>
+								<div class="comments__item__content__message">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur doloremque eaque
+										eius, enim expedita impedit incidunt quas? Adipisci architecto blanditiis commodi
+										doloremque excepturi, magni maiores mollitia non porro suscipit velit?</p>
+
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa cum, dignissimos
+										exercitationem fugit ipsa magni, quam quibusdam sit temporibus ullam unde vero.
+										Distinctio dolore doloremque dolorum illo in incidunt vero!</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="comments__item">
+							<img src="//placehold.it/50x50" alt="" class="comments__item__avatar">
+							<div class="comments__item__content">
+								<div class="comments__item__content__heading">
+									<time class="comments__item__content__heading__date">10. 10. 2015</time>
+									od <strong>Nikolky Bruncové</strong>
+								</div>
+								<div class="comments__item__content__message">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur doloremque eaque
+										eius, enim expedita impedit incidunt quas? Adipisci architecto blanditiis commodi
+										doloremque excepturi, magni maiores mollitia non porro suscipit velit?</p>
+
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa cum, dignissimos
+										exercitationem fugit ipsa magni, quam quibusdam sit temporibus ullam unde vero.
+										Distinctio dolore doloremque dolorum illo in incidunt vero!</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="comments__item">
+					<img src="//placehold.it/50x50" alt="" class="comments__item__avatar">
+					<div class="comments__item__content">
+						<div class="comments__item__content__heading">
+							<time class="comments__item__content__heading__date">10. 10. 2015</time>
+							od <strong>Nikolky Bruncové</strong>
+						</div>
+						<div class="comments__item__content__message">
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur doloremque eaque
+								eius, enim expedita impedit incidunt quas? Adipisci architecto blanditiis commodi
+								doloremque excepturi, magni maiores mollitia non porro suscipit velit?</p>
+
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa cum, dignissimos
+								exercitationem fugit ipsa magni, quam quibusdam sit temporibus ullam unde vero.
+								Distinctio dolore doloremque dolorum illo in incidunt vero!</p>
+						</div>
+					</div>
+				</div>
+
+
+			</section>
+
 		</div>
 
 	</article>
@@ -430,6 +564,10 @@
 <script src="js/lightbox.js"></script><!-- jq, photoswipe-ui -->
 
 <script src="js/load_fb_share.js"></script> <!-- jq -->
+
+<!-- comments: -->
+<script src="js/libs/autosize.js"></script>
+<script src="js/form.js"></script><!-- jq, autosize -->
 
 </body>
 </html>
