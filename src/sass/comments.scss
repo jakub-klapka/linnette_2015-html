@@ -6,6 +6,13 @@
 		margin-bottom: $base_line_height;
 	}
 
+	&__error {
+		color: red;
+		font-size: 14px;
+		font-weight: bold;
+		margin-bottom: $base_line_height;
+	}
+
 	&__item {
 		padding-top: $base_line_height;
 		border-color: $separators_color;
