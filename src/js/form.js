@@ -15,6 +15,7 @@
 		bindEvents: function() {
 
 			this.source.on( 'focus', $.proxy( this.showTarget, this ) );
+			$( document ).on( 'lumi_comments_already_set', $.proxy( this.showTarget, this ) );
 
 		},
 

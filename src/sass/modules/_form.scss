@@ -92,4 +92,22 @@
 		&__hidden {
 			display: none;
 		}
+
+
+		&__facebook_button {
+			background: none;
+			border: none;
+			border-radius: 0;
+			margin: 0;
+			padding: 0;
+			vertical-align: middle;
+			margin-left: 5px;
+
+				&__logo {
+					$size: 25px;
+					width: $size;
+					height: $size;
+				}
+
+		}
 }

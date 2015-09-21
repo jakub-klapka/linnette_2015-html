@@ -349,7 +349,7 @@
 
 					<div class="form__input_wrap">
 						<label class="form__label" for="zprava">Napište mi komentář:</label>
-						<textarea class="form__input is-textarea" name="zprava" id="zprava" required="required" data-js-hidden_source="comments"></textarea>
+						<textarea class="form__input is-textarea" name="zprava" id="zprava" required="required" data-js-hidden_source="comments" data-js-social_login="textarea"></textarea>
 					</div>
 
 					<div class="form__hidden" data-js-hidden_target="comments">
@@ -365,7 +365,24 @@
 							<input class="form__input" type="email" id="email"/>
 						</div>
 
+						<div class="form__input_wrap">
+							<div class="form__label">Nebo se přihlásit přes <button data-js-social_login="button" class="form__facebook_button"><svg class="form__facebook_button__logo" aria-label="Facebook"><use xlink:href="#icon-facebook"></use></svg></button></div>
+							<div class="form__input_note" style="display: none;" data-js-social_login="oneall_container">
+								Prosím potvrďte tímto tlačítkem:
+								<!-- OneAll.com / Social Login for WordPress / v5.0 -->
+								<div class="oneall_social_login">
+									<div class="oneall_social_login_providers" id="oneall_social_login_providers_1828996"></div>
+									<script type="text/javascript">
+										var _oneall = _oneall || [];
+										_oneall.push(['social_login', 'set_providers', ['facebook']]);
+										_oneall.push(['social_login', 'set_callback_uri', (window.location.href + ((window.location.href.split('?')[1] ? '&amp;': '?') + "oa_social_login_source=shortcode#comments"))]);
+										_oneall.push(['social_login', 'set_custom_css_uri', 'https://secure.oneallcdn.com/css/api/socialize/themes/wordpress/default.css']);
+										_oneall.push(['social_login', 'do_render_ui', 'oneall_social_login_providers_1828996']);
+									</script>
+								</div>
 
+							</div>
+						</div>
 
 						<div class="form__input_wrap is-submit">
 							<button type="submit" class="form__submit">Odeslat</button>
@@ -583,6 +600,9 @@
 <!-- comments: -->
 <script src="js/libs/autosize.js"></script>
 <script src="js/form.js"></script><!-- jq, autosize -->
+
+<!-- js social login (if user not logged in and comments are enabled -->
+<script src="js/js_social_login.js"></script><!-- jq, velocity -->
 
 </body>
 </html>
