@@ -45,6 +45,10 @@
 						}
 				}
 
+				&__message {
+					font-size: 14px;
+				}
+
 			}
 
 			@include respond-to( 'comments_wrap' ) {
