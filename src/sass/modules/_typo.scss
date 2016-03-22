@@ -21,7 +21,7 @@
 	}
 
 	strong {
-		font-weight: 700;
+		font-weight: $bold_font_weight;
 	}
 
 	a {
@@ -66,12 +66,12 @@
 
 	h3 {
 		font-size: 18px;
-		font-weight: 700;
+		font-weight: $bold_font_weight;
 	}
 
 	h4 {
 		font-size: 14px;
-		font-weight: 700;
+		font-weight: $bold_font_weight;
 	}
 
 	ul {
