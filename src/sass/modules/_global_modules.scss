@@ -1,20 +1,5 @@
 @import "../global";
 
-.divider {
-	width: 100%;
-	line-height: $base_line_height;
-	margin: ( $base_line_height / 2 ) 0;
-	text-align: center;
-	flex-shrink: 0;
-
-		&__image {
-			display: inline-block;
-			width: 12px;
-			height: 4px;
-			color: $highlight_color;
-			vertical-align: middle;
-		}
-}
 
 .captioned_image {
 	display: block;
