@@ -57,7 +57,7 @@
 						}
 
 						&.is-active {
-							font-weight: 700;
+							font-weight: $bold_font_weight;
 							color: $link_color;
 						}
 				}
@@ -70,7 +70,7 @@
 
 				&__caption {
 					display: inline-block;
-					font-weight: 700;
+					font-weight: $bold_font_weight;
 					margin: 0 $base_line_height / 2;
 				}
 
@@ -89,7 +89,7 @@
 						}
 
 						&.is-active {
-							font-weight: 700;
+							font-weight: $bold_font_weight;
 							color: $link_color;
 						}
 				}
