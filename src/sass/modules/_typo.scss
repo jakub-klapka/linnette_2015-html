@@ -172,4 +172,29 @@
 			}
 	}
 
+	.image_with_text {
+		margin-top: $base_line_height;
+		margin-bottom: $base_line_height;
+		display: flex;
+
+			&__image {
+				@include hoverable_image();
+				flex: 0 1 100%;
+				margin: 0 $base_line_height/2 0 0;
+			}
+
+			&__text {
+				flex: 0 1 100%;
+				margin: 0 0 0 $base_line_height/2;
+				display: flex;
+				position: relative;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+				text-align: center;
+				font-size: 1px;
+			}
+
+	}
+
 }
