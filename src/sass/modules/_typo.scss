@@ -186,13 +186,44 @@
 			&__text {
 				flex: 0 1 100%;
 				margin: 0 0 0 $base_line_height/2;
-				display: flex;
 				position: relative;
-				align-items: center;
-				justify-content: center;
+
+					&__inner {
+						position: absolute;
+						left: 0;
+						right: 0;
+						top: $base_line_height;
+						bottom: $base_line_height;
+						overflow: hidden;
+
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						flex-direction: column;
+						text-align: center;
+						//font-size: 1px; //Will be corrected with textFit
+						line-height: #{$base_line_height/$base_font_size};
+					}
+
+			}
+
+			@include respond-to( 'article_gallery_wrap' ) {
 				flex-direction: column;
-				text-align: center;
-				font-size: 1px;
+
+					&__image {
+						margin-right: 0;
+					}
+
+					&__text {
+						margin-left: 0;
+						margin-top: $base_line_height;
+
+							&__inner {
+								position: relative;
+								top: 0;
+								bottom: 0;
+							}
+					}
 			}
 
 	}
