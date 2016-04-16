@@ -201,8 +201,13 @@
 						justify-content: center;
 						flex-direction: column;
 						text-align: center;
-						//font-size: 1px; //Will be corrected with textFit
 						line-height: #{$base_line_height/$base_font_size};
+
+							p, .textFitted { //Stupid IE10 bugfix
+								max-width: 100%;
+								text-align: center;
+								margin: 0;
+							}
 					}
 
 			}
@@ -212,11 +217,13 @@
 
 					&__image {
 						margin-right: 0;
+						flex-basis: auto;
 					}
 
 					&__text {
 						margin-left: 0;
 						margin-top: $base_line_height;
+						flex-basis: auto;
 
 							&__inner {
 								position: relative;
