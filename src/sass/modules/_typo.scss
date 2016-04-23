@@ -177,15 +177,17 @@
 		margin-bottom: $base_line_height;
 		display: flex;
 
+		$margin: $base_line_height/2;
+
 			&__image {
 				@include hoverable_image();
 				flex: 0 1 100%;
-				margin: 0 $base_line_height/2 0 0;
+				margin: 0 $margin 0 0;
 			}
 
 			&__text {
 				flex: 0 1 100%;
-				margin: 0 0 0 $base_line_height/2;
+				margin: 0 0 0 $margin;
 				position: relative;
 
 					&__inner {
@@ -231,6 +233,23 @@
 								bottom: 0;
 							}
 					}
+			}
+
+			//Reverse order of image and text
+			@include respond-to( 'article_gallery_wrap_reverse' ) {
+				$root: &;
+				&.is-reverse {
+
+						#{$root}__image {
+							order: 2;
+							margin: 0 0 0 $margin;
+						}
+
+						#{$root}__text {
+							order: 1;
+							margin: 0 $margin 0 0;
+						}
+				}	
 			}
 
 	}
