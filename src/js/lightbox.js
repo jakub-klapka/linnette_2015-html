@@ -3,7 +3,7 @@
 
 	$( function(){
 
-		var figures = $( '.article_gallery figure, .images_list .images_list__item' );
+		var figures = $( '.article_gallery figure, .images_list .images_list__item, [data-js-lightbox]' );
 
 		figures.on( 'click', function(){
 

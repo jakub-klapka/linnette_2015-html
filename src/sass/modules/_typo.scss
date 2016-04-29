@@ -172,4 +172,89 @@
 			}
 	}
 
+	.image_with_text {
+		margin-top: $base_line_height;
+		margin-bottom: $base_line_height;
+		display: flex;
+
+		$margin: $base_line_height/2;
+
+			&__image {
+				@include hoverable_image();
+				flex: 0 1 100%;
+				margin: 0 $margin 0 0;
+			}
+
+			&__text {
+				flex: 0 1 100%;
+				margin: 0 0 0 $margin;
+				position: relative;
+
+					&__inner {
+						position: absolute;
+						left: 0;
+						right: 0;
+						top: $base_line_height;
+						bottom: $base_line_height;
+						overflow: hidden;
+
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						flex-direction: column;
+						text-align: center;
+						line-height: #{$base_line_height/$base_font_size};
+
+							p, .textFitted { //Stupid IE10 bugfix
+								max-width: 100%;
+								text-align: center;
+								margin: 0;
+							}
+					}
+
+			}
+
+			@include respond-to( 'article_gallery_wrap' ) {
+				flex-direction: column;
+
+					&__image {
+						margin-right: 0;
+						flex-basis: auto;
+					}
+
+					&__text {
+						margin-left: 0;
+						margin-top: $base_line_height;
+						flex-basis: auto;
+
+							&__inner {
+								position: relative;
+								top: 0;
+								bottom: 0;
+							}
+					}
+			}
+
+			//Reverse order of image and text
+			@include respond-to( 'article_gallery_wrap_reverse' ) {
+				$root: &;
+				@if $add_body_id {
+					$root: '.image_with_text'; //Bypass #tinymce for editor-style, not really super important...
+				}
+				&.is-reverse {
+
+						#{$root}__image {
+							order: 2;
+							margin: 0 0 0 $margin;
+						}
+
+						#{$root}__text {
+							order: 1;
+							margin: 0 $margin 0 0;
+						}
+				}
+			}
+
+	}
+
 }
