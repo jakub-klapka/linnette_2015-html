@@ -63,4 +63,14 @@
 				}
 
 		}
+
+		&.is-lazyloaded {
+
+			#{$root}__image {
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+
+		}
 }
