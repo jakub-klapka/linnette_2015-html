@@ -1,0 +1,133 @@
+@import "../global";
+
+/*
+ * Gallery styles
+ */
+.photo_selection {
+
+	//.images_list__item {
+	//	position: relative;
+	//}
+
+	&__checkbox {
+		display: none;
+
+		$checkbox_selector: &;
+		& + &__label {
+			$size: $base_line_height * 1.5;
+
+			position: absolute;
+			bottom: $base_line_height / 2;
+			right: $base_line_height / 2;
+			z-index: 200;
+
+			display: block;
+			width: $size;
+			height: $size;
+			cursor: pointer;
+
+			#{$checkbox_selector}__label__svg {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				color: $link_color;
+				transition: opacity $transition;
+
+				&.is-closed {
+					opacity: 0;
+				}
+			}
+		}
+
+		&:checked + &__label {
+			#{$checkbox_selector}__label__svg {
+				&.is-closed {
+					opacity: 1;
+				}
+
+				&.is-open {
+					opacity: 0;
+				}
+			}
+		}
+	}
+
+	.images_list__item.is-checked .images_list__item__image_wrap::before {
+		content: '';
+		position: absolute;
+		left:0;
+		top:0;
+		right:0;
+		bottom:0;
+		border: 2px solid $link_color;
+	}
+
+}
+
+/*
+ * PSWP Modification
+ */
+.pswp__linnete-photo-selection {
+	$font-size: 14px;
+
+	position: absolute;
+	bottom: 7px;
+	left: 0;
+	right: 0;
+	text-align: center;
+	color: $link_color;
+
+	&__button {
+		background: none;
+		padding: 5px;
+		line-height: $font-size;
+		margin: 0;
+		border: 2px solid $link_color;
+		border-radius: 2px;
+
+		&__text {
+			font-size: $font-size;
+			font-weight: bold;
+		}
+
+		&__icon {
+			position: relative;
+			display: inline-block;
+			width: $font-size;
+			height: $font-size;
+			margin-bottom: -1px;
+
+			&__svg {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				color: $link_color;
+				transition: opacity $transition;
+
+				&.is-closed {
+					opacity: 0;
+					color: $body_bg;
+				}
+			}
+		}
+
+		$root: &;
+		&.is-selected {
+			background: $link_color;
+			color: $body_bg;
+
+			#{$root}__icon__svg {
+				&.is-closed {
+					opacity: 1;
+				}
+				&.is-open {
+					opacity: 0;
+				}
+			}
+		}
+	}
+}
