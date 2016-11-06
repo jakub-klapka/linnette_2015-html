@@ -64,6 +64,10 @@
 		border: 2px solid $link_color;
 	}
 
+	.article_gallery__item__caption {
+		display: none;
+	}
+
 }
 
 /*
@@ -86,6 +90,8 @@
 		margin: 0;
 		border: 2px solid $link_color;
 		border-radius: 2px;
+		transition-property: background-color, color;
+		transition-duration: $transition;
 
 		&__text {
 			font-size: $font-size;
@@ -130,4 +136,11 @@
 			}
 		}
 	}
+}
+
+/*
+ * PSWP Caption mocification
+ */
+.pswp__caption__center.is-photo_selection {
+	padding-left: 290px;
 }
