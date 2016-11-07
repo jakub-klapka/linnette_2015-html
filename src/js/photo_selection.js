@@ -33,6 +33,26 @@
 		pswpSelectButton: undefined,
 
 		/**
+		 * Wrapper for Save and send actions
+		 */
+		actionsWrapper: undefined,
+
+		/**
+		 * Counter of selected photos
+		 */
+		counter: undefined,
+
+		/**
+		 * Button for save action
+		 */
+		saveButton: undefined,
+
+		/**
+		 * @var undefined|boolean
+		 */
+		formDisabled: undefined,
+
+		/**
 		 * Constructor, fired for each gallery
 		 *
 		 * @param wraper jQuery
@@ -46,6 +66,10 @@
 			this.labels = wraper.find( '.photo_selection__checkbox__label' );
 			this.figures = wraper.find( '.images_list__item' );
 			this.pswpSelectButton = $( '.pswp__linnete-photo-selection__button' );
+			this.actionsWrapper = $( '.photo_selection_actions:first' );
+			this.counter = this.actionsWrapper.find( '[data-photo_selection_counter]' );
+			this.saveButton = this.actionsWrapper.find( '.photo_selection_actions__save_button' );
+			this.formDisabled = $( '.pswp__linnete-photo-selection' ).hasClass( 'is-disabled' );
 
 			/**
 			 * Events
@@ -53,6 +77,10 @@
 			this.removeCheckboxClickBubble();
 			this.toggleWrapClassOnCheck();
 			this.bindPswpEvents();
+			this.checkboxes.on( 'change', $.proxy( this.recalculateCounter, this ) );
+
+			this.saveButton.on( 'click', function (event) { event.preventDefault(); } );
+			this.saveButton.on( 'click', $.proxy( this.saveSelection, this ) );
 
 		},
 
@@ -93,7 +121,9 @@
 			} );
 
 			//Click on photo select button in PS
-			this.pswpSelectButton.on( 'click', $.proxy( this.passButtonClickToCheckbox, this ) );
+			if( !this.formDisabled ){
+				this.pswpSelectButton.on( 'click', $.proxy( this.passButtonClickToCheckbox, this ) );
+			}
 
 		},
 
@@ -132,9 +162,11 @@
 			/*
 			 * PSWP Events
 			 */
+			if( !this.formDisabled ) {
+				this.bindWindowXKeySelections( true );
+				this.photoswipe.listen( 'unbindEvents', $.proxy( this.bindWindowXKeySelections, this, false ) );
+			}
 			this.photoswipe.listen( 'beforeChange', $.proxy( this.setPswpImageSelectorValue, this ) );
-			this.bindWindowXKeySelections( true );
-			this.photoswipe.listen( 'unbindEvents', $.proxy( this.bindWindowXKeySelections, this, false ) );
 
 			this.photoswipe.init();
 		},
@@ -169,6 +201,7 @@
 		setPswpImageSelectorValue: function () {
 
 			var checkbox = this.wraper.find( '#' + this.photoswipe.currItem.id );
+
 			if( checkbox.is( ':checked' ) ) {
 				this.pswpSelectButton.addClass( 'is-selected' );
 			} else {
@@ -193,13 +226,46 @@
 				this.pswpSelectButton.removeClass( 'is-selected' );
 			}
 
+		},
+
+		/**
+		 * Count all selected checkboxes and update counter
+		 */
+		recalculateCounter: function() {
+			var count = this.checkboxes.filter( ':checked' ).length;
+			this.counter.text( count );
+		},
+
+		/**
+		 * Handle Save action
+		 */
+		saveSelection: function () {
+			this.saveButton.removeClass( 'is-saved' ).addClass( 'is-saving' ).prop( 'disabled', true );
+
+			//TODO: Handle ajax
+			setTimeout( $.proxy( function() {
+				this.saveButton.removeClass( 'is-saving' ).addClass( 'is-saved' ).prop( 'disabled', false );
+			}, this ), 2000 );
+
+			//TODO: on ajax completion
+			setTimeout( $.proxy( function() {
+				this.saveButton.removeClass( 'is-saving' ).removeClass( 'is-saved' ).prop( 'disabled', false );
+			}, this ), 4000 );
+
 		}
 
 	};
 
+	/**
+	 * DOM Ready
+	 */
 	$( function() {
 		$( '.photo_selection' ).each( function() {
 			Object.create( PhotoSelection ).init( $( this ) );
+		} );
+
+		$( 'form textarea' ).each( function() {
+			autosize( this );
 		} );
 	} );
 

@@ -21,7 +21,7 @@
 			div.style.display = 'none';
 			div.innerHTML = ajax.responseText;
 			document.body.insertBefore(div, document.body.childNodes[0]);
-		}
+		};
 	</script>
 </head>
 <body>
@@ -66,96 +66,113 @@
 
 	<article class="main_content" role="main" itemprop="mainContentOfPage">
 
+		<form action="post" class="photo_selection_form">
 
-		<div class="main_content__typo">
-			<!--<h1>Výběr fotek: Test</h1>-->
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam exercitationem explicabo id iure magnam natus numquam pariatur porro reiciendis sunt.</p>
-		</div>
+			<div class="main_content__typo">
+				<!--<h1>Výběr fotek: Test</h1>-->
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam exercitationem explicabo id iure magnam natus numquam pariatur porro reiciendis sunt.</p>
+			</div>
 
-		<div class="images_list photo_selection is-photo_selection" itemscope itemtype="https://schema.org/ImageGallery">
+			<div class="images_list photo_selection is-photo_selection" itemscope itemtype="https://schema.org/ImageGallery">
 
-			<figure class="images_list__item" itemscope itemtype="https://schema.org/ImageObject" itemprop="image">
-				<div class="images_list__item__image_wrap">
-					<img alt="Zatopený lom"
-					     srcset="sample_content/aticle_list.jpg 341w"
-					     sizes="(max-width: 730px) 50vw, (max-width: 1024px) 25vw, (max-width: 1280px) calc( ( 100vw - 258px ) / 4 ), 256px"
-					     width="341" height="341"
-					     class="images_list__item__image"
-					     itemprop="image"
-						 data-url="sample_content/aticle_list.jpg" data-width="341" data-height="341"/>
-					<svg class="images_list__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
-					<input class="photo_selection__checkbox" type="checkbox" id="photo_selection_123456789">
-					<label class="photo_selection__checkbox__label" for="photo_selection_123456789" aria-hidden="true">
-						<svg class="photo_selection__checkbox__label__svg is-open"><use xlink:href="#icon-check_open"></use></svg>
-						<svg class="photo_selection__checkbox__label__svg is-closed"><use xlink:href="#icon-check_close"></use></svg>
-					</label>
-				</div>
-				<figcaption class="article_gallery__item__caption" itemprop="caption">IMG_0123</figcaption>
-			</figure>
+				<figure class="images_list__item xis-checked" itemscope itemtype="https://schema.org/ImageObject" itemprop="image">
+					<div class="images_list__item__image_wrap">
+						<img alt="Zatopený lom"
+						     srcset="sample_content/aticle_list.jpg 341w"
+						     sizes="(max-width: 730px) 50vw, (max-width: 1024px) 25vw, (max-width: 1280px) calc( ( 100vw - 258px ) / 4 ), 256px"
+						     width="341" height="341"
+						     class="images_list__item__image"
+						     itemprop="image"
+							 data-url="sample_content/aticle_list.jpg" data-width="341" data-height="341"/>
+						<svg class="images_list__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
+						<input class="photo_selection__checkbox" type="checkbox" id="photo_selection_123456789" xdisabled="disabled">
+						<label class="photo_selection__checkbox__label" for="photo_selection_123456789" aria-hidden="true">
+							<svg class="photo_selection__checkbox__label__svg is-open"><use xlink:href="#icon-check_open"></use></svg>
+							<svg class="photo_selection__checkbox__label__svg is-closed"><use xlink:href="#icon-check_close"></use></svg>
+						</label>
+					</div>
+					<figcaption class="article_gallery__item__caption" itemprop="caption">IMG_0123</figcaption>
+				</figure>
 
-			<figure class="images_list__item" itemscope itemtype="https://schema.org/ImageObject" itemprop="image">
-				<div class="images_list__item__image_wrap">
-					<img alt="Zatopený lom"
-					     srcset="sample_content/aticle_list.jpg 341w"
-					     sizes="(max-width: 730px) 50vw, (max-width: 1024px) 25vw, (max-width: 1280px) calc( ( 100vw - 258px ) / 4 ), 256px"
-					     width="341" height="341"
-					     class="images_list__item__image"
-					     itemprop="image"
-						 data-url="sample_content/aticle_list.jpg" data-width="341" data-height="341"/>
-					<svg class="images_list__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
-					<input class="photo_selection__checkbox" type="checkbox" id="photo_selection_1234567">
-					<label class="photo_selection__checkbox__label" for="photo_selection_1234567" aria-hidden="true">
-						<svg class="photo_selection__checkbox__label__svg is-open"><use xlink:href="#icon-check_open"></use></svg>
-						<svg class="photo_selection__checkbox__label__svg is-closed"><use xlink:href="#icon-check_close"></use></svg>
-					</label>
-				</div>
-				<figcaption class="article_gallery__item__caption" itemprop="caption">IMG_4567</figcaption>
-			</figure>
+				<figure class="images_list__item is-checked" itemscope itemtype="https://schema.org/ImageObject" itemprop="image">
+					<div class="images_list__item__image_wrap">
+						<img alt="Zatopený lom"
+						     srcset="sample_content/aticle_list.jpg 341w"
+						     sizes="(max-width: 730px) 50vw, (max-width: 1024px) 25vw, (max-width: 1280px) calc( ( 100vw - 258px ) / 4 ), 256px"
+						     width="341" height="341"
+						     class="images_list__item__image"
+						     itemprop="image"
+							 data-url="sample_content/aticle_list.jpg" data-width="341" data-height="341"/>
+						<svg class="images_list__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
+						<input class="photo_selection__checkbox" type="checkbox" id="photo_selection_1234567" checked="checked">
+						<label class="photo_selection__checkbox__label" for="photo_selection_1234567" aria-hidden="true">
+							<svg class="photo_selection__checkbox__label__svg is-open"><use xlink:href="#icon-check_open"></use></svg>
+							<svg class="photo_selection__checkbox__label__svg is-closed"><use xlink:href="#icon-check_close"></use></svg>
+						</label>
+					</div>
+					<figcaption class="article_gallery__item__caption" itemprop="caption">IMG_4567</figcaption>
+				</figure>
 
-			<figure class="images_list__item" itemscope itemtype="https://schema.org/ImageObject" itemprop="image">
-				<div class="images_list__item__image_wrap">
-					<img alt="Zatopený lom"
-					     srcset="sample_content/aticle_list.jpg 341w"
-					     sizes="(max-width: 730px) 50vw, (max-width: 1024px) 25vw, (max-width: 1280px) calc( ( 100vw - 258px ) / 4 ), 256px"
-					     width="341" height="341"
-					     class="images_list__item__image"
-					     itemprop="image"
-						 data-url="sample_content/aticle_list.jpg" data-width="341" data-height="341"/>
-					<svg class="images_list__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
-					<input class="photo_selection__checkbox" type="checkbox" id="photo_selection_12345678">
-					<label class="photo_selection__checkbox__label" for="photo_selection_12345678" aria-hidden="true">
-						<svg class="photo_selection__checkbox__label__svg is-open"><use xlink:href="#icon-check_open"></use></svg>
-						<svg class="photo_selection__checkbox__label__svg is-closed"><use xlink:href="#icon-check_close"></use></svg>
-					</label>
-				</div>
-				<figcaption class="article_gallery__item__caption" itemprop="caption">IMG_4123</figcaption>
-			</figure>
-
-
-			<!-- BELOW FOLD -->
-
-			<figure class="images_list__item">
-				<div class="images_list__item__image_wrap">
-					<img alt="Zatopený lom"
-					     data-srcset="sample_content/aticle_list.jpg 341w"
-					     width="341" height="341"
-					     class="images_list__item__image lazyload"
-					     itemprop="image"
-					     data-url="sample_content/aticle_list.jpg" data-width="341" data-height="341"/>
-					<svg class="images_list__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
-					<input class="photo_selection__checkbox" type="checkbox" id="photo_selection_1234">
-					<label class="photo_selection__checkbox__label" for="photo_selection_1234" aria-hidden="true">
-						<svg class="photo_selection__checkbox__label__svg is-open"><use xlink:href="#icon-check_open"></use></svg>
-						<svg class="photo_selection__checkbox__label__svg is-closed"><use xlink:href="#icon-check_close"></use></svg>
-					</label>
-				</div>
-				<figcaption class="article_gallery__item__caption" itemprop="caption">IMG_4523</figcaption>
-			</figure>
+				<figure class="images_list__item" itemscope itemtype="https://schema.org/ImageObject" itemprop="image">
+					<div class="images_list__item__image_wrap">
+						<img alt="Zatopený lom"
+						     srcset="sample_content/aticle_list.jpg 341w"
+						     sizes="(max-width: 730px) 50vw, (max-width: 1024px) 25vw, (max-width: 1280px) calc( ( 100vw - 258px ) / 4 ), 256px"
+						     width="341" height="341"
+						     class="images_list__item__image"
+						     itemprop="image"
+							 data-url="sample_content/aticle_list.jpg" data-width="341" data-height="341"/>
+						<svg class="images_list__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
+						<input class="photo_selection__checkbox" type="checkbox" id="photo_selection_12345678" disabled="disabled">
+						<label class="photo_selection__checkbox__label" for="photo_selection_12345678" aria-hidden="true">
+							<svg class="photo_selection__checkbox__label__svg is-open"><use xlink:href="#icon-check_open"></use></svg>
+							<svg class="photo_selection__checkbox__label__svg is-closed"><use xlink:href="#icon-check_close"></use></svg>
+						</label>
+					</div>
+					<figcaption class="article_gallery__item__caption" itemprop="caption">IMG_4123</figcaption>
+				</figure>
 
 
+				<!-- BELOW FOLD -->
 
+				<figure class="images_list__item is-checked">
+					<div class="images_list__item__image_wrap">
+						<img alt="Zatopený lom"
+						     data-srcset="sample_content/aticle_list.jpg 341w"
+						     width="341" height="341"
+						     class="images_list__item__image lazyload"
+						     itemprop="image"
+						     data-url="sample_content/aticle_list.jpg" data-width="341" data-height="341"/>
+						<svg class="images_list__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
+						<input class="photo_selection__checkbox" type="checkbox" id="photo_selection_1234" checked="checked" disabled="disabled">
+						<label class="photo_selection__checkbox__label" for="photo_selection_1234" aria-hidden="true">
+							<svg class="photo_selection__checkbox__label__svg is-open"><use xlink:href="#icon-check_open"></use></svg>
+							<svg class="photo_selection__checkbox__label__svg is-closed"><use xlink:href="#icon-check_close"></use></svg>
+						</label>
+					</div>
+					<figcaption class="article_gallery__item__caption" itemprop="caption">IMG_4523</figcaption>
+				</figure>
 
-		</div><!-- images_list -->
+			</div><!-- images_list -->
+
+			<div class="main_content__typo photo_selection_actions">
+				<p>
+					<span class="photo_selection_actions__selected_count">Vybraných fotek: <strong data-photo_selection_counter>15</strong></span>
+					<button type="submit" name="save_photo_selection" class="photo_selection_actions__save_button xis-saved xis-saving" xdisabled>
+						<span class="photo_selection_actions__save_button__save_text">Uložit</span>
+						<span class="photo_selection_actions__save_button__loader" aria-hidden="true"><svg><use xlink:href="#icon-loader"></use></svg></span>
+						<span class="photo_selection_actions__save_button__saved_text" aria-hidden="true">Uloženo!</span>
+					</button>
+					<span class="photo_selection_actions__button_note">(K výběru se můžete později vrátit)</span>
+				</p>
+				<p>
+					<label class="form__label" for="zprava">Vzkaz:</label>
+					<textarea class="form__input is-textarea" name="zprava" id="zprava"></textarea>
+					<br><button type="submit" class="form__submit">Odeslat ke zpracování</button>
+				</p>
+			</div><!-- photo_selection_actions -->
+
+		</form><!-- photo_selection_form -->
 
 	</article><!-- main_content -->
 
@@ -226,8 +243,8 @@
 
 			<!-- Linnete photo selection -->
 
-			<div class="pswp__linnete-photo-selection">
-				<button class="pswp__linnete-photo-selection__button xis-selected">
+			<div class="pswp__linnete-photo-selection xis-disabled">
+				<button class="pswp__linnete-photo-selection__button xis-selected" xdisabled="disabled">
 					<span class="pswp__linnete-photo-selection__button__text">Výběr fotky</span>
 					<span class="pswp__linnete-photo-selection__button__icon">
 						<svg class="pswp__linnete-photo-selection__button__icon__svg is-open"><use xlink:href="#icon-check_open"></use></svg>
@@ -261,7 +278,9 @@
 
 <script src="js/libs/lazysizes.js"></script>
 
-<script src="js/photo_selection.js"></script><!-- jq, photoswipe -->
+<script src="js/libs/autosize.js"></script>
+<script src="js/photo_selection.js"></script><!-- jq, photoswipe, autosize -->
+
 
 </body>
 </html>

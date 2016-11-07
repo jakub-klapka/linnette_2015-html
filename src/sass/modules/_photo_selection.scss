@@ -1,13 +1,33 @@
 @import "../global";
 
+$disabled_color: grey;
+
+/*
+ * Extends
+ */
+%button {
+	background: none;
+	padding: 5px;
+	line-height: 1em;
+	font-weight: bold;
+	margin: 0;
+	border: 2px solid $link_color;
+	border-radius: 2px;
+	transition-property: background-color, color;
+	transition-duration: $transition;
+	color: $link_color;
+}
+%button_hover {
+	&:hover {
+		color: $body_bg;
+		background-color: $link_color;
+	}
+}
+
 /*
  * Gallery styles
  */
 .photo_selection {
-
-	//.images_list__item {
-	//	position: relative;
-	//}
 
 	&__checkbox {
 		display: none;
@@ -52,6 +72,16 @@
 				}
 			}
 		}
+
+		$root: &;
+		&[disabled] + &__label {
+			cursor: auto;
+
+			#{$root}__label__svg { //This is really sasshell, sorry
+				color: $disabled_color;
+			}
+		}
+
 	}
 
 	.images_list__item.is-checked .images_list__item__image_wrap::before {
@@ -84,18 +114,10 @@
 	color: $link_color;
 
 	&__button {
-		background: none;
-		padding: 5px;
-		line-height: $font-size;
-		margin: 0;
-		border: 2px solid $link_color;
-		border-radius: 2px;
-		transition-property: background-color, color;
-		transition-duration: $transition;
+		@extend %button;
 
 		&__text {
 			font-size: $font-size;
-			font-weight: bold;
 		}
 
 		&__icon {
@@ -136,6 +158,25 @@
 			}
 		}
 	}
+
+	$root: &;
+	&.is-disabled {
+		color: $disabled_color;
+
+		#{$root}__button { //Now, the selectors are just queses...
+			border-color: $disabled_color;
+			color: $disabled_color;
+		}
+
+		#{$root}__button__icon__svg {
+			color: $disabled_color;
+
+		}
+
+		#{$root}__button.is-selected { //It's importatnt to learn from your own mistakes!
+			background-color: transparent;
+		}
+	}
 }
 
 /*
@@ -143,4 +184,84 @@
  */
 .pswp__caption__center.is-photo_selection {
 	padding-left: 290px;
+}
+
+/*
+ * Actions (Form, etc.)
+ */
+@keyframes rotation {
+	0% {
+		transform: rotate( 0deg );
+	}
+	100% {
+		transform: rotate( 360deg );
+	}
+}
+
+.photo_selection_actions {
+
+	&__selected_count {
+
+		strong {
+			color: $link_color;
+		}
+	}
+
+	&__save_button {
+		@extend %button;
+		@extend %button_hover;
+		margin-left: 1em;
+
+		&__loader {
+			display: none;
+
+			svg {
+				animation: rotation 2s linear infinite;
+				width: 1em;
+				height: 1em;
+			}
+		}
+
+		&__saved_text {
+			display: none;
+		}
+
+		$root: &;
+		&.is-saving {
+			color: $body_bg;
+			background-color: $link_color;
+
+			#{$root}__loader {
+				display: inline-block;
+			}
+
+		}
+
+		&.is-saved {
+			color: $body_bg;
+			background-color: $link_color;
+
+			#{$root}__save_text {
+				display: none;
+			}
+
+			#{$root}__saved_text {
+				display: inline;
+			}
+		}
+
+	}
+
+	&__button_note {
+		font-size: $base_font_size * 0.8;
+		margin-left: 1em;
+	}
+
+	@media only screen and( max-width: 650px ) {
+		&__selected_count, &__save_button, &__button_note {
+			display: block;
+			margin: 0 auto;
+			text-align: center;
+		}
+	}
 }
