@@ -66,10 +66,10 @@
 
 	<article class="main_content" role="main" itemprop="mainContentOfPage">
 
-		<form action="post" class="photo_selection_form">
+		<form method="post" action="photo_selection_response.json" class="photo_selection_form">
 
 			<div class="main_content__typo">
-				<!--<h1>Výběr fotek: Test</h1>-->
+				<h1>Výběr fotek: Test</h1>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam exercitationem explicabo id iure magnam natus numquam pariatur porro reiciendis sunt.</p>
 			</div>
 
@@ -85,7 +85,7 @@
 						     itemprop="image"
 							 data-url="sample_content/aticle_list.jpg" data-width="341" data-height="341"/>
 						<svg class="images_list__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
-						<input class="photo_selection__checkbox" type="checkbox" id="photo_selection_123456789" xdisabled="disabled">
+						<input class="photo_selection__checkbox" type="checkbox" name="photo_selection_123456789" id="photo_selection_123456789" xdisabled="disabled">
 						<label class="photo_selection__checkbox__label" for="photo_selection_123456789" aria-hidden="true">
 							<svg class="photo_selection__checkbox__label__svg is-open"><use xlink:href="#icon-check_open"></use></svg>
 							<svg class="photo_selection__checkbox__label__svg is-closed"><use xlink:href="#icon-check_close"></use></svg>
@@ -104,7 +104,7 @@
 						     itemprop="image"
 							 data-url="sample_content/aticle_list.jpg" data-width="341" data-height="341"/>
 						<svg class="images_list__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
-						<input class="photo_selection__checkbox" type="checkbox" id="photo_selection_1234567" checked="checked">
+						<input class="photo_selection__checkbox" type="checkbox" name="photo_selection_1234567" id="photo_selection_1234567" checked="checked">
 						<label class="photo_selection__checkbox__label" for="photo_selection_1234567" aria-hidden="true">
 							<svg class="photo_selection__checkbox__label__svg is-open"><use xlink:href="#icon-check_open"></use></svg>
 							<svg class="photo_selection__checkbox__label__svg is-closed"><use xlink:href="#icon-check_close"></use></svg>
@@ -123,7 +123,7 @@
 						     itemprop="image"
 							 data-url="sample_content/aticle_list.jpg" data-width="341" data-height="341"/>
 						<svg class="images_list__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
-						<input class="photo_selection__checkbox" type="checkbox" id="photo_selection_12345678" disabled="disabled">
+						<input class="photo_selection__checkbox" type="checkbox" name="photo_selection_12345678" id="photo_selection_12345678" disabled="disabled">
 						<label class="photo_selection__checkbox__label" for="photo_selection_12345678" aria-hidden="true">
 							<svg class="photo_selection__checkbox__label__svg is-open"><use xlink:href="#icon-check_open"></use></svg>
 							<svg class="photo_selection__checkbox__label__svg is-closed"><use xlink:href="#icon-check_close"></use></svg>
@@ -144,7 +144,7 @@
 						     itemprop="image"
 						     data-url="sample_content/aticle_list.jpg" data-width="341" data-height="341"/>
 						<svg class="images_list__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
-						<input class="photo_selection__checkbox" type="checkbox" id="photo_selection_1234" checked="checked" disabled="disabled">
+						<input class="photo_selection__checkbox" type="checkbox" name="photo_selection_1234" id="photo_selection_1234" checked="checked" disabled="disabled">
 						<label class="photo_selection__checkbox__label" for="photo_selection_1234" aria-hidden="true">
 							<svg class="photo_selection__checkbox__label__svg is-open"><use xlink:href="#icon-check_open"></use></svg>
 							<svg class="photo_selection__checkbox__label__svg is-closed"><use xlink:href="#icon-check_close"></use></svg>
@@ -158,7 +158,7 @@
 			<div class="main_content__typo photo_selection_actions">
 				<p>
 					<span class="photo_selection_actions__selected_count">Vybraných fotek: <strong data-photo_selection_counter>15</strong></span>
-					<button type="submit" name="save_photo_selection" class="photo_selection_actions__save_button xis-saved xis-saving" xdisabled>
+					<button type="submit" name="save_photo_selection" value="1" class="photo_selection_actions__save_button xis-saved xis-saving" xdisabled>
 						<span class="photo_selection_actions__save_button__save_text">Uložit</span>
 						<span class="photo_selection_actions__save_button__loader" aria-hidden="true"><svg><use xlink:href="#icon-loader"></use></svg></span>
 						<span class="photo_selection_actions__save_button__saved_text" aria-hidden="true">Uloženo!</span>
@@ -167,8 +167,8 @@
 				</p>
 				<p>
 					<label class="form__label" for="zprava">Vzkaz:</label>
-					<textarea class="form__input is-textarea" name="zprava" id="zprava"></textarea>
-					<br><button type="submit" class="form__submit">Odeslat ke zpracování</button>
+					<textarea class="form__input is-textarea" name="zprava" id="zprava">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, qui.</textarea>
+					<br><button type="submit" name="form_submit" value="1" class="form__submit">Odeslat ke zpracování</button>
 				</p>
 			</div><!-- photo_selection_actions -->
 

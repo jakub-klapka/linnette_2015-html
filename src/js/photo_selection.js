@@ -1,5 +1,18 @@
 ( function( $ ){
 
+	/**
+	 * Handle All Photo Selection actions
+	 *
+	 * API:
+	 * For save only, fire POST request with all standard form data to form action URL
+	 * with added data: 'action': 'save_selection'. Expecting JSON response with:
+	 * { "result": "saved" }, or with error message: { "error": "Friendly error text" }.
+	 *
+	 * For final form submission, submit form with all standards through button:
+	 * <button type="submit" name="form_submit" value="1">. In this case, we are expecting
+	 * full HTML response with updated data.
+	 *
+	 */
 	var PhotoSelection = {
 
 		/**
@@ -53,6 +66,31 @@
 		formDisabled: undefined,
 
 		/**
+		 * Holds Form element
+		 */
+		form: undefined,
+
+		/**
+		 * URL for form submission
+		 */
+		formEndpoint: undefined,
+
+		/**
+		 * Indicates, if there are changes in checkboxes until last save
+		 */
+		changedSinceSave: undefined,
+
+		/**
+		 * Interval in ms for autosaving
+		 */
+		autosaveInterval: undefined,
+
+		/**
+		 * Is save currently in process
+		 */
+		currentlySaving: undefined,
+
+		/**
 		 * Constructor, fired for each gallery
 		 *
 		 * @param wraper jQuery
@@ -70,6 +108,11 @@
 			this.counter = this.actionsWrapper.find( '[data-photo_selection_counter]' );
 			this.saveButton = this.actionsWrapper.find( '.photo_selection_actions__save_button' );
 			this.formDisabled = $( '.pswp__linnete-photo-selection' ).hasClass( 'is-disabled' );
+			this.form = $( '.photo_selection_form' );
+			this.formEndpoint = this.form.prop( 'action' );
+			this.changedSinceSave = false;
+			this.autosaveInterval = 1000 * 60;
+			this.currentlySaving = false;
 
 			/**
 			 * Events
@@ -81,6 +124,10 @@
 
 			this.saveButton.on( 'click', function (event) { event.preventDefault(); } );
 			this.saveButton.on( 'click', $.proxy( this.saveSelection, this ) );
+
+			//Autosaving
+			this.checkboxes.on( 'change', $.proxy( this.setChangedStatusForAutosave, this ) );
+			setInterval( $.proxy( this.maybeAutosave, this ), this.autosaveInterval );
 
 		},
 
@@ -238,20 +285,79 @@
 
 		/**
 		 * Handle Save action
+		 *
+		 * Expecting success json:
+		 * { "result": "saved" }
+		 * Or Fail json:
+		 * { "error": "Friendly error text" }
 		 */
 		saveSelection: function () {
-			this.saveButton.removeClass( 'is-saved' ).addClass( 'is-saving' ).prop( 'disabled', true );
+			this.currentlySaving = true;
+			this.setButtonState( 'saving' );
 
-			//TODO: Handle ajax
-			setTimeout( $.proxy( function() {
+			var data = this.form.serializeArray();
+			data.push( {
+				'name': 'action',
+				'value': 'save_selection'
+			} );
+
+			var save_xhr = $.ajax( {
+				'dataType': 'json',
+				'method': 'POST',
+				'url': this.formEndpoint,
+				'data': data
+			} );
+
+			save_xhr.done( $.proxy( function( data ) {
+				if( data.result === 'saved' ) {
+					this.changedSinceSave = false;
+					this.setButtonState( 'saved' );
+				} else {
+					alert( data.error );
+				}
+
+				this.currentlySaving = false;
+
+			}, this ) );
+
+			save_xhr.fail( $.proxy( function( data ) {
+				alert( data.statusText );
+				this.currentlySaving = false;
+			}, this ) );
+
+		},
+
+		/**
+		 * Set Save button appearance
+		 *
+		 * @param state must be one of [ 'saving, 'saved' ]
+		 */
+		setButtonState: function( state ) {
+			if( state === 'saving' ) {
+				this.saveButton.removeClass( 'is-saved' ).addClass( 'is-saving' ).prop( 'disabled', true );
+			}
+			if( state === 'saved' ) {
 				this.saveButton.removeClass( 'is-saving' ).addClass( 'is-saved' ).prop( 'disabled', false );
-			}, this ), 2000 );
+				setTimeout( $.proxy( function() {
+					this.saveButton.removeClass( 'is-saving' ).removeClass( 'is-saved' ).prop( 'disabled', false );
+				}, this ), 4000 );
+			}
+		},
 
-			//TODO: on ajax completion
-			setTimeout( $.proxy( function() {
-				this.saveButton.removeClass( 'is-saving' ).removeClass( 'is-saved' ).prop( 'disabled', false );
-			}, this ), 4000 );
+		/**
+		 * On any checkbox change, set changedSinceSave for autosave handling
+		 */
+		setChangedStatusForAutosave: function () {
+			this.changedSinceSave = true;
+		},
 
+		/**
+		 * If there are changes since last save and we are not processing any other request, Save!
+		 */
+		maybeAutosave: function () {
+			if( this.currentlySaving === false && this.changedSinceSave ) {
+				this.saveSelection();
+			}
 		}
 
 	};
