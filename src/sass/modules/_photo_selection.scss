@@ -1,6 +1,7 @@
 @import "../global";
 
 $disabled_color: grey;
+$note_font_size: $base_font_size * 0.8;
 
 /*
  * Extends
@@ -28,6 +29,11 @@ $disabled_color: grey;
  * Gallery styles
  */
 .photo_selection {
+
+	&__note {
+		font-size: $note_font_size;
+		padding: 0 1em;
+	}
 
 	&__checkbox {
 		display: none;
@@ -253,7 +259,7 @@ $disabled_color: grey;
 	}
 
 	&__button_note {
-		font-size: $base_font_size * 0.8;
+		font-size: $note_font_size;
 		margin-left: 1em;
 	}
 
