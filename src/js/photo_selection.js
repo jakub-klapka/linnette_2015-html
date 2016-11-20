@@ -109,7 +109,7 @@
 			this.saveButton = this.actionsWrapper.find( '.photo_selection_actions__save_button' );
 			this.formDisabled = $( '.pswp__linnete-photo-selection' ).hasClass( 'is-disabled' );
 			this.form = $( '.photo_selection_form' );
-			this.formEndpoint = this.form.prop( 'action' );
+			this.formEndpoint = this.form.attr( 'action' );
 			this.changedSinceSave = false;
 			this.autosaveInterval = 1000 * 60;
 			this.currentlySaving = false;
@@ -297,7 +297,7 @@
 
 			var data = this.form.serializeArray();
 			data.push( {
-				'name': 'action',
+				'name': 'photo_selection_action',
 				'value': 'save_selection'
 			} );
 
@@ -313,7 +313,7 @@
 					this.changedSinceSave = false;
 					this.setButtonState( 'saved' );
 				} else {
-					alert( data.error );
+					alert( 'Nepodařilo se uložit výběr. Prosím, dejte nám o této chybě vědět. Děkujeme.' );
 				}
 
 				this.currentlySaving = false;
@@ -321,7 +321,7 @@
 			}, this ) );
 
 			save_xhr.fail( $.proxy( function( data ) {
-				alert( data.statusText );
+				alert( 'Nepodařilo se uložit výběr. Prosím, dejte nám o této chybě vědět. Děkujeme.' );
 				this.currentlySaving = false;
 			}, this ) );
 

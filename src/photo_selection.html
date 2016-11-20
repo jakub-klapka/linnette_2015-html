@@ -66,7 +66,9 @@
 
 	<article class="main_content" role="main" itemprop="mainContentOfPage">
 
-		<form method="post" action="photo_selection_response.json" class="photo_selection_form">
+		<form method="post" action="https://localhost/linnette_2015/wp/wp-admin/admin-ajax.php" class="photo_selection_form">
+			<input type="hidden" name="action" value="photo_selection">
+			<input type="hidden" name="_wp_nonce" value="123456789">
 
 			<div class="main_content__typo">
 				<h1>Výběr fotek: Test</h1>
