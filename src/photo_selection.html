@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="cs_CZ" itemscope itemtype="https://schema.org/WebPage">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="image" content="images/logo.png"/>
+
+	<title itemprop="name">Linnette 2015</title>
+
+	<!-- https://www.google.com/fonts/#UsePlace:use/Collection:Open+Sans:300italic,300,600,600italic -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,600,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../dist/css/layout.css"/>
+	<link rel="stylesheet" href="../dist/css/lightbox.css"/>
+
+	<script>
+		var ajax = new XMLHttpRequest();
+		ajax.open("GET", "../dist/images/svg_sprite.svg", true);
+		ajax.send();
+		ajax.onload = function(e) {
+			var div = document.createElement("div");
+			div.style.display = 'none';
+			div.innerHTML = ajax.responseText;
+			document.body.insertBefore(div, document.body.childNodes[0]);
+		};
+	</script>
+</head>
+<body>
+
+<div class="page_wrap">
+
+	<button class="mobile_menu_button" aria-controls="main_header" data-js-menu_button><svg aria-label="Otevřít menu"><use xlink:href="#icon-menu"></use></svg></button>
+
+	<aside class="mobile_header" data-js-mobile_header>
+		<a href="" class="mobile_header__logo"><svg aria-label="Linnette Logo"><use xlink:href="#icon-logo_mobile"></use></svg></a>
+	</aside>
+
+	<header class="main_header" role="banner" id="main_header" data-js-main_header>
+
+		<a class="main_header__logo" href=""><svg class="main_header__logo__image" aria-label="Linnette Logo"><use xlink:href="#icon-logo"></use></svg></a>
+
+		<div class="divider" aria-hidden="true"><svg class="divider__image"><use xlink:href="#icon-divider"></use></svg></div>
+
+		<nav class="main_header__nav" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+			<ul class="main_header__nav__ul">
+				<li class="main_header__nav__ul__item"><a href="" itemprop="name url">Úvod</a></li>
+				<li class="main_header__nav__ul__item"><a href="" itemprop="name url">Portfolio</a></li>
+				<li class="main_header__nav__ul__item"><a href="" itemprop="name url">Retuše</a></li>
+				<li class="main_header__nav__ul__item"><a href="" itemprop="name url">Reference</a></li>
+				<li class="main_header__nav__ul__item"><a href="" itemprop="name url">Autor</a></li>
+				<li class="main_header__nav__ul__item"><a href="" itemprop="name url">Kontakt</a></li>
+			</ul>
+		</nav>
+
+		<div class="divider" aria-hidden="true"><svg class="divider__image"><use xlink:href="#icon-divider"></use></svg></div>
+
+		<nav class="main_header__socials">
+			<a class="main_header__socials__link" href=""><svg class="main_header__socials__link__image" aria-label="Facebook"><use xlink:href="#icon-facebook"></use></svg></a>
+			<a class="main_header__socials__link" href=""><svg class="main_header__socials__link__image" aria-label="Instagram"><use xlink:href="#icon-instagram"></use></svg></a>
+		</nav>
+
+		<div class="divider" aria-hidden="true"><svg class="divider__image"><use xlink:href="#icon-divider"></use></svg></div>
+
+		<div class="main_header__copyright">&copy; 2015 Linnette.cz</div>
+
+	</header>
+
+	<article class="main_content" role="main" itemprop="mainContentOfPage">
+
+		<form method="post" action="https://localhost/linnette_2015/wp/wp-admin/admin-ajax.php" class="photo_selection_form">
+			<input type="hidden" name="action" value="photo_selection">
+			<input type="hidden" name="_wp_nonce" value="123456789">
+
+			<div class="main_content__typo">
+				<h1>Výběr fotek: Test</h1>
+
+				<div class="form_notification">Notifikace odeslaného formuláře....</div>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam exercitationem explicabo id iure magnam natus numquam pariatur porro reiciendis sunt.</p>
+			</div>
+
+			<div class="images_list photo_selection is-photo_selection" itemscope itemtype="https://schema.org/ImageGallery">
+
+				<div class="photo_selection__note">
+					(Kliknutím na fotku se vám zobrazí její plná velikost. Pro prohlížení plných velikostí fotek můžete používat šipky na klávesnici a klávesu X pro označení.)
+				</div>
+
+				<figure class="images_list__item xis-checked" itemscope itemtype="https://schema.org/ImageObject" itemprop="image">
+					<div class="images_list__item__image_wrap">
+						<img alt="Zatopený lom"
+						     srcset="sample_content/aticle_list.jpg 341w"
+						     sizes="(max-width: 730px) 50vw, (max-width: 1024px) 25vw, (max-width: 1280px) calc( ( 100vw - 258px ) / 4 ), 256px"
+						     width="341" height="341"
+						     class="images_list__item__image"
+						     itemprop="image"
+							 data-url="sample_content/aticle_list.jpg" data-width="341" data-height="341"/>
+						<svg class="images_list__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
+						<input class="photo_selection__checkbox" type="checkbox" name="photo_selection_123456789" id="photo_selection_123456789" xdisabled="disabled">
+						<label class="photo_selection__checkbox__label" for="photo_selection_123456789" aria-hidden="true">
+							<svg class="photo_selection__checkbox__label__svg is-open"><use xlink:href="#icon-check_open"></use></svg>
+							<svg class="photo_selection__checkbox__label__svg is-closed"><use xlink:href="#icon-check_close"></use></svg>
+						</label>
+					</div>
+					<figcaption class="article_gallery__item__caption" itemprop="caption">IMG_0123</figcaption>
+				</figure>
+
+				<figure class="images_list__item is-checked" itemscope itemtype="https://schema.org/ImageObject" itemprop="image">
+					<div class="images_list__item__image_wrap">
+						<img alt="Zatopený lom"
+						     srcset="sample_content/aticle_list.jpg 341w"
+						     sizes="(max-width: 730px) 50vw, (max-width: 1024px) 25vw, (max-width: 1280px) calc( ( 100vw - 258px ) / 4 ), 256px"
+						     width="341" height="341"
+						     class="images_list__item__image"
+						     itemprop="image"
+							 data-url="sample_content/aticle_list.jpg" data-width="341" data-height="341"/>
+						<svg class="images_list__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
+						<input class="photo_selection__checkbox" type="checkbox" name="photo_selection_1234567" id="photo_selection_1234567" checked="checked">
+						<label class="photo_selection__checkbox__label" for="photo_selection_1234567" aria-hidden="true">
+							<svg class="photo_selection__checkbox__label__svg is-open"><use xlink:href="#icon-check_open"></use></svg>
+							<svg class="photo_selection__checkbox__label__svg is-closed"><use xlink:href="#icon-check_close"></use></svg>
+						</label>
+					</div>
+					<figcaption class="article_gallery__item__caption" itemprop="caption">IMG_4567</figcaption>
+				</figure>
+
+				<figure class="images_list__item" itemscope itemtype="https://schema.org/ImageObject" itemprop="image">
+					<div class="images_list__item__image_wrap">
+						<img alt="Zatopený lom"
+						     srcset="sample_content/aticle_list.jpg 341w"
+						     sizes="(max-width: 730px) 50vw, (max-width: 1024px) 25vw, (max-width: 1280px) calc( ( 100vw - 258px ) / 4 ), 256px"
+						     width="341" height="341"
+						     class="images_list__item__image"
+						     itemprop="image"
+							 data-url="sample_content/aticle_list.jpg" data-width="341" data-height="341"/>
+						<svg class="images_list__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
+						<input class="photo_selection__checkbox" type="checkbox" name="photo_selection_12345678" id="photo_selection_12345678" disabled="disabled">
+						<label class="photo_selection__checkbox__label" for="photo_selection_12345678" aria-hidden="true">
+							<svg class="photo_selection__checkbox__label__svg is-open"><use xlink:href="#icon-check_open"></use></svg>
+							<svg class="photo_selection__checkbox__label__svg is-closed"><use xlink:href="#icon-check_close"></use></svg>
+						</label>
+					</div>
+					<figcaption class="article_gallery__item__caption" itemprop="caption">IMG_4123</figcaption>
+				</figure>
+
+
+				<!-- BELOW FOLD -->
+
+				<figure class="images_list__item is-checked">
+					<div class="images_list__item__image_wrap">
+						<img alt="Zatopený lom"
+						     data-srcset="sample_content/aticle_list.jpg 341w"
+						     width="341" height="341"
+						     class="images_list__item__image lazyload"
+						     itemprop="image"
+						     data-url="sample_content/aticle_list.jpg" data-width="341" data-height="341"/>
+						<svg class="images_list__item__image_wrap__expand" aria-hidden="true"><use xlink:href="#icon-expand"></use></svg>
+						<input class="photo_selection__checkbox" type="checkbox" name="photo_selection_1234" id="photo_selection_1234" checked="checked" disabled="disabled">
+						<label class="photo_selection__checkbox__label" for="photo_selection_1234" aria-hidden="true">
+							<svg class="photo_selection__checkbox__label__svg is-open"><use xlink:href="#icon-check_open"></use></svg>
+							<svg class="photo_selection__checkbox__label__svg is-closed"><use xlink:href="#icon-check_close"></use></svg>
+						</label>
+					</div>
+					<figcaption class="article_gallery__item__caption" itemprop="caption">IMG_4523</figcaption>
+				</figure>
+
+			</div><!-- images_list -->
+
+			<div class="main_content__typo photo_selection_actions">
+				<p>
+					<span class="photo_selection_actions__selected_count">Vybraných fotek: <strong data-photo_selection_counter>15</strong></span>
+					<button type="submit" name="save_photo_selection" value="1" class="photo_selection_actions__save_button xis-saved xis-saving" xdisabled>
+						<span class="photo_selection_actions__save_button__save_text">Uložit</span>
+						<span class="photo_selection_actions__save_button__loader" aria-hidden="true"><svg><use xlink:href="#icon-loader"></use></svg></span>
+						<span class="photo_selection_actions__save_button__saved_text" aria-hidden="true">Uloženo!</span>
+					</button>
+					<span class="photo_selection_actions__button_note">(K výběru se můžete později vrátit)</span>
+				</p>
+				<p>
+					<label class="form__label" for="zprava">Vzkaz:</label>
+					<textarea class="form__input is-textarea" name="zprava" id="zprava" xdisabled="disabled">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, qui.
+					asdasd
+					sadasd
+
+					asdasd</textarea>
+					<br><button type="submit" name="form_submit" value="1" class="form__submit">Odeslat ke zpracování</button>
+				</p>
+			</div><!-- photo_selection_actions -->
+
+		</form><!-- photo_selection_form -->
+
+	</article><!-- main_content -->
+
+</div><!-- page_wrap -->
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+	<!-- Background of PhotoSwipe.
+		 It's a separate element as animating opacity is faster than rgba(). -->
+	<div class="pswp__bg"></div>
+
+	<!-- Slides wrapper with overflow:hidden. -->
+	<div class="pswp__scroll-wrap">
+
+		<!-- Container that holds slides.
+			PhotoSwipe keeps only 3 of them in the DOM to save memory.
+			Don't modify these 3 pswp__item elements, data is added later on. -->
+		<div class="pswp__container">
+			<div class="pswp__item"></div>
+			<div class="pswp__item"></div>
+			<div class="pswp__item"></div>
+		</div>
+
+		<!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+		<div class="pswp__ui pswp__ui--hidden">
+
+			<div class="pswp__top-bar">
+
+				<!--  Controls are self-explanatory. Order can be changed. -->
+
+				<div class="pswp__counter"></div>
+
+				<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+				<button class="pswp__button pswp__button--share" title="Share"></button>
+
+				<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+				<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+				<!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+				<!-- element will get class pswp__preloader--active when preloader is running -->
+				<div class="pswp__preloader">
+					<div class="pswp__preloader__icn">
+						<div class="pswp__preloader__cut">
+							<div class="pswp__preloader__donut"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+				<div class="pswp__share-tooltip"></div>
+			</div>
+
+			<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+			</button>
+
+			<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+			</button>
+
+			<div class="pswp__caption">
+				<div class="pswp__caption__center is-photo_selection"></div>
+			</div>
+
+			<!-- Linnete photo selection -->
+
+			<div class="pswp__linnete-photo-selection xis-disabled">
+				<button class="pswp__linnete-photo-selection__button xis-selected" xdisabled="disabled">
+					<span class="pswp__linnete-photo-selection__button__text">Výběr fotky</span>
+					<span class="pswp__linnete-photo-selection__button__icon">
+						<svg class="pswp__linnete-photo-selection__button__icon__svg is-open"><use xlink:href="#icon-check_open_no_fill"></use></svg>
+						<svg class="pswp__linnete-photo-selection__button__icon__svg is-closed"><use xlink:href="#icon-check_checkmark"></use></svg>
+					</span>
+				</button>
+			</div>
+
+			<!--/Linnete photo selection -->
+
+		</div>
+
+	</div>
+
+</div>
+
+
+<script src="js/libs/picturefill.js"></script>
+<script src="js/libs/modernizr.js"></script>
+
+<script src="js/libs/jquery-2.1.3.js"></script>
+<script src="js/libs/velocity.js"></script> <!-- jq -->
+<script src="js/libs/enquire.js"></script>
+<script src="js/libs/headroom.js"></script>
+<script src="js/libs/jQuery.headroom.js"></script> <!-- jq, headroom -->
+<script src="js/menu.js"></script> <!-- jq, velocity, enquire, headroom -->
+
+<script src="js/libs/photoswipe.js"></script>
+<script src="js/libs/photoswipe-ui-default.js"></script><!-- photoswipe -->
+<script src="js/lightbox.js"></script><!-- jq, photoswipe-ui -->
+
+<script src="js/libs/lazysizes.js"></script>
+
+<script src="js/libs/autosize.js"></script>
+<script src="js/photo_selection.js"></script><!-- jq, photoswipe, autosize -->
+
+
+</body>
+</html>
