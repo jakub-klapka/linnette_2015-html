@@ -124,6 +124,11 @@
 		margin-bottom: $base_line_height;
 	}
 
+	iframe {
+		display: block;
+		margin: $base_line_height 0;
+	}
+
 	.call_to_action_link {
 		display: flex;
 		justify-content: center;
