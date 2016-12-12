@@ -356,7 +356,9 @@
 		 * If there are changes since last save and we are not processing any other request, Save!
 		 */
 		maybeAutosave: function () {
-			if( this.currentlySaving === false && this.changedSinceSave ) {
+			// if( this.currentlySaving === false && this.changedSinceSave ) {
+			// Save even without changes - to extend session lock, TODO: move to low-cost keep-alives
+			if( this.currentlySaving === false ) {
 				this.saveSelection();
 			}
 		},
