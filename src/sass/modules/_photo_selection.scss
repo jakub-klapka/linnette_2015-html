@@ -189,7 +189,12 @@ $note_font_size: $base_font_size * 0.8;
  * PSWP Caption mocification
  */
 .pswp__caption__center.is-photo_selection {
-	padding-left: 290px;
+	position: absolute;
+	max-width: 100%;
+	width: auto;
+	left: 50%;
+	margin-left: 58px;
+	bottom: 4px;
 }
 
 /*

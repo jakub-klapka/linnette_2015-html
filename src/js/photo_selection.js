@@ -128,6 +128,7 @@
 			//Autosaving
 			this.checkboxes.on( 'change', $.proxy( this.setChangedStatusForAutosave, this ) );
 			setInterval( $.proxy( this.maybeAutosave, this ), this.autosaveInterval );
+			$( window ).on( 'beforeunload', $.proxy( this.rejectLock, this ) );
 
 		},
 
@@ -358,6 +359,31 @@
 			if( this.currentlySaving === false && this.changedSinceSave ) {
 				this.saveSelection();
 			}
+		},
+
+		/**
+		 * Send request to reject lock on window close - allowing other person to update selection
+		 *
+		 * Don't bother with response
+		 *
+		 * @event window.onbeforeunload
+		 */
+		rejectLock: function () {
+
+			var data = {
+				'action': this.form.find( 'input[name="action"]' ).val(),
+				'_wp_nonce': this.form.find( 'input[name="_wp_nonce"]' ).val(),
+				'name': 'photo_selection_action',
+				'value': 'reject_lock'
+			};
+
+			$.ajax( {
+				'dataType': 'json',
+				'method': 'POST',
+				'url': this.formEndpoint,
+				'data': data
+			} );
+
 		}
 
 	};
