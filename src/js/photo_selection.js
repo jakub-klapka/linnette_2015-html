@@ -375,8 +375,9 @@
 			var data = {
 				'action': this.form.find( 'input[name="action"]' ).val(),
 				'_wp_nonce': this.form.find( 'input[name="_wp_nonce"]' ).val(),
-				'name': 'photo_selection_action',
-				'value': 'reject_lock'
+				'post_id': this.form.find( 'input[name="post_id"]' ).val(),
+				'access_token': this.form.find( 'input[name="access_token"]' ).val(),
+				'photo_selection_action': 'reject_lock'
 			};
 
 			$.ajax( {
