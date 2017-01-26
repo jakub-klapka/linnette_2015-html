@@ -275,4 +275,10 @@ $note_font_size: $base_font_size * 0.8;
 			text-align: center;
 		}
 	}
+
+	&__submit_button {
+		@extend %button;
+		@extend %button_hover;
+		padding: 1em;
+	}
 }

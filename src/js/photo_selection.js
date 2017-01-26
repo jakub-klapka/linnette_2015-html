@@ -117,18 +117,22 @@
 			/**
 			 * Events
 			 */
+			if( !this.formDisabled ) {
+				//Form unlocked
+				this.toggleWrapClassOnCheck();
+				this.checkboxes.on( 'change', $.proxy( this.recalculateCounter, this ) );
+				this.saveButton.on( 'click', function (event) { event.preventDefault(); } );
+				this.saveButton.on( 'click', $.proxy( this.saveSelection, this ) );
+
+				//Autosaving
+				this.checkboxes.on( 'change', $.proxy( this.setChangedStatusForAutosave, this ) );
+				setInterval( $.proxy( this.maybeAutosave, this ), this.autosaveInterval );
+				$( window ).on( 'beforeunload', $.proxy( this.rejectLock, this ) );
+			}
+
+			//Bind everytime
 			this.removeCheckboxClickBubble();
-			this.toggleWrapClassOnCheck();
 			this.bindPswpEvents();
-			this.checkboxes.on( 'change', $.proxy( this.recalculateCounter, this ) );
-
-			this.saveButton.on( 'click', function (event) { event.preventDefault(); } );
-			this.saveButton.on( 'click', $.proxy( this.saveSelection, this ) );
-
-			//Autosaving
-			this.checkboxes.on( 'change', $.proxy( this.setChangedStatusForAutosave, this ) );
-			setInterval( $.proxy( this.maybeAutosave, this ), this.autosaveInterval );
-			$( window ).on( 'beforeunload', $.proxy( this.rejectLock, this ) );
 
 		},
 
@@ -399,7 +403,7 @@
 			Object.create( PhotoSelection ).init( $( this ) );
 		} );
 
-		$( 'form textarea' ).each( function() {
+		$( '.form__input.is-textarea' ).each( function() {
 			autosize( this );
 		} );
 	} );
