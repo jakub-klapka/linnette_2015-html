@@ -1,3 +1,8 @@
+/*
+ * gulp -> production
+ * gulp dev -> watcher
+ */
+
 var gulp = require('gulp'),
 	sass = require('gulp-ruby-sass'),
 	autoprefixer = require('gulp-autoprefixer'),
@@ -56,7 +61,8 @@ gulp.task( 'sass', function(){
 		} ) )
 		.pipe( map_filter )
 		.pipe( autoprefixer() )
-		.pipe( gulp.dest( 'dist/css' ) );
+		.pipe( gulp.dest( 'dist/css' ) )
+		.pipe( gulp.dest( '../wp/wp-content/themes/linnette/assets/css' ) );
 });
 gulp.task( 'sass_watch', function(){
 	gulp.watch( 'src/sass/**/*.scss', [ 'sass' ] );
@@ -72,7 +78,8 @@ gulp.task( 'images', function(){
 		.pipe( imagemin( {
 			progressive: true
 		} ) )
-		.pipe( gulp.dest( 'dist/images' ) );
+		.pipe( gulp.dest( 'dist/images' ) )
+		.pipe( gulp.dest( '../wp/wp-content/themes/linnette/assets/images' ) );
 } );
 gulp.task( 'images_watch', function(){
 	gulp.watch( 'src/images/**/*', [ 'images' ] );
@@ -89,7 +96,8 @@ gulp.task( 'svg_sprite', function(){
 		.pipe( svgstore( {
 			fileName: 'svg_sprite.svg'
 		} ) )
-		.pipe( gulp.dest( 'dist/images' ) );
+		.pipe( gulp.dest( 'dist/images' ) )
+		.pipe( gulp.dest( '../wp/wp-content/themes/linnette/assets/images' ) );
 } );
 gulp.task( 'svg_sprite_watch', function(){
 	gulp.watch( 'src/svg_sprite/**/*', [ 'svg_sprite' ] );
@@ -104,7 +112,8 @@ gulp.task( 'js', function() {
 	return gulp.src( 'src/js/**/*.js', { base: 'src/js' } )
 		.pipe( plumber( plumber_config ) )
 		.pipe( uglify() )
-		.pipe( gulp.dest( 'dist/js' ) );
+		.pipe( gulp.dest( 'dist/js' ) )
+		.pipe( gulp.dest( '../wp/wp-content/themes/linnette/assets/js' ) );
 } );
 
 
