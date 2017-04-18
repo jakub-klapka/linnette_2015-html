@@ -198,6 +198,11 @@
 											display: none;
 										}
 								}
+
+								&.is-active a {
+									color: $link_color;
+								}
+
 						}
 				}
 		}
