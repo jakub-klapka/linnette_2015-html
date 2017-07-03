@@ -4,7 +4,7 @@
  */
 
 var gulp = require('gulp'),
-	sass = require('gulp-ruby-sass'),
+	sass = require('gulp-sass'),
 	autoprefixer = require('gulp-autoprefixer'),
 	plumber = require('gulp-plumber'),
 	livereload = require('gulp-livereload'),
@@ -18,7 +18,11 @@ var gulp = require('gulp'),
 //	html_replace = require('gulp-html-replace'),
 	gulpFilter = require('gulp-filter' );
 //	gulpsync = require('gulp-sync')(gulp);
+var yargs = require('yargs').argv;
+var gulpif = require('gulp-if');
+var browsersync = require('browser-sync').create();
 
+var dev = ( yargs._[0] === 'dev' ) ? true : false;
 
 var plumber_config = {
 	errorHandler: function (err) {
@@ -53,18 +57,21 @@ Bitmap sprite
 SASS
  */
 gulp.task( 'sass', function(){
-	var map_filter = gulpFilter( [ '*', '!*.map' ] );
-	return gulp.src( 'src/sass/**/*', { base: 'src/sass' } )
+
+	return gulp.src( 'src/sass/**/*.scss', { base: 'src/sass' } )
 		.pipe( plumber( plumber_config ) )
-		.pipe( sass( {
-			'style': 'compressed'
-		} ) )
-		.pipe( map_filter )
+		.pipe( gulpif( dev, sass( {
+			outputStyle: 'expanded'
+		} ), sass( {
+			outputStyle: 'compressed'
+		} ) ) )
 		.pipe( autoprefixer() )
 		.pipe( gulp.dest( 'dist/css' ) )
-		.pipe( gulp.dest( '../wp/wp-content/themes/linnette/assets/css' ) );
+		.pipe( gulp.dest( '../wp/wp-content/themes/linnette/assets/css' ) )
+		.pipe( browsersync.stream() );
+
 });
-gulp.task( 'sass_watch', function(){
+gulp.task( 'sass_watch', ['sass'], function(){
 	gulp.watch( 'src/sass/**/*.scss', [ 'sass' ] );
 } );
 
@@ -118,13 +125,17 @@ gulp.task( 'js', function() {
 
 
 /*
-Livereload
+DEV
  */
-gulp.task( 'livereload', function(){
-	livereload.listen();
-	gulp.watch( [ 'dist/**/*', 'src/*.html', 'src/js/**/*' ], function( e ){
-		livereload.changed( e.path );
+gulp.task( 'browsersync', function() {
+
+	browsersync.init( {
+		server: "./",
+		directory: true
 	} );
+
+	gulp.watch( 'src/*.html' ).on('change', browsersync.reload);
+
 } );
 
 
@@ -132,4 +143,4 @@ gulp.task( 'livereload', function(){
 Tasks
  */
 gulp.task( 'default', [ 'sass', 'images', 'svg_sprite', 'js' ] );
-gulp.task( 'dev', [ 'sass_watch', 'livereload', 'images_watch', 'svg_sprite_watch' ] );
+gulp.task( 'dev', [ 'sass_watch', 'browsersync', 'images_watch', 'svg_sprite_watch' ] );

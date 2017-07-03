@@ -29,22 +29,34 @@
 		text-decoration: none;
 		position: relative;
 
-		&::after {
-			content: '';
-			position: absolute;
-			left: 0;
-			right: 0;
-			bottom: -2px;
-			height: 1px;
-			display: block;
-			border-bottom: 1px solid $link_color;
-			opacity: 1;
-			transition: opacity $transition;
+		//&::after {
+		//	content: '';
+		//	position: absolute;
+		//	left: 0;
+		//	right: 0;
+		//	bottom: -2px;
+		//	height: 1px;
+		//	display: block;
+		//	border-bottom: 1px solid $link_color;
+		//	opacity: 1;
+		//	transition: opacity $transition;
+		//}
+		//
+		//&:hover::after {
+		//	opacity: 0;
+		//}
+	}
+	
+	.main_content__typo {
+
+		a {
+			text-decoration: underline;
+
+			&:hover {
+				text-decoration: none;
+			}
 		}
 
-		&:hover::after {
-			opacity: 0;
-		}
 	}
 
 	h1, h2, h3, h4, h5, h6, p, ul, ol, blockquote, code {
@@ -137,6 +149,7 @@
 
 			&__inner { //anchor
 				display: inline-block;
+				text-decoration: none !important;
 				//flex: 0 0 auto;
 				padding: $base_line_height/4 $base_line_height;
 				border-radius: 5px;
