@@ -135,6 +135,7 @@ gulp.task( 'browsersync', function() {
 	} );
 
 	gulp.watch( 'src/*.html' ).on('change', browsersync.reload);
+	gulp.watch( 'dist/images/**/*' ).on('change', browsersync.reload);
 
 } );
 
