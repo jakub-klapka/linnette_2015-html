@@ -9,9 +9,15 @@
 
 	<!-- https://www.google.com/fonts/#UsePlace:use/Collection:Open+Sans:300italic,300,600,600italic -->
 	<!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,600,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>-->
-	<link rel="stylesheet" href="../dist/css/layout.css"/>
-	<link rel="stylesheet" href="../dist/css/lightbox.css"/>
-	<link rel="stylesheet" href="../dist/css/comments.css"/>
+	<link rel="stylesheet" href="../dist/css/critical.css">
+
+	<link rel="preload" href="../dist/css/layout.css" as="style" onload="this.rel='stylesheet'">
+	<link rel="preload" href="../dist/css/lightbox.css" as="style" onload="this.rel='stylesheet'">
+	<link rel="preload" href="../dist/css/comments.css" as="style" onload="this.rel='stylesheet'">
+
+	<!--<link rel="stylesheet" href="../dist/css/layout.css"/>-->
+	<!--<link rel="stylesheet" href="../dist/css/lightbox.css"/>-->
+	<!--<link rel="stylesheet" href="../dist/css/comments.css"/>-->
 
 	<script>
 		var ajax = new XMLHttpRequest();
@@ -768,6 +774,8 @@
 <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,600,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>-->
 
 <script src="js/webfontloader.js"></script>
+<script src="js/libs/loadcss.js"></script>
+<script src="js/libs/loadcss_polyfill.js"></script>
 
 <script src="js/libs/picturefill.js"></script>
 <script src="js/libs/modernizr.js"></script>

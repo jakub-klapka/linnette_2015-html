@@ -21,6 +21,13 @@ var gulp = require('gulp'),
 var yargs = require('yargs').argv;
 var gulpif = require('gulp-if');
 var browsersync = require('browser-sync').create();
+var penthouse = require( 'gulp-penthouse' );
+var cleancss = require( 'gulp-clean-css' );
+var concat = require( 'gulp-concat' );
+var merge_stream = require( 'merge-stream' );
+var debug = require( 'gulp-debug' );
+var clean = require( 'gulp-clean');
+var wait = require('gulp-wait');
 
 var dev = ( yargs._[0] === 'dev' ) ? true : false;
 
@@ -75,6 +82,53 @@ gulp.task( 'sass_watch', ['sass'], function(){
 	gulp.watch( 'src/sass/**/*.scss', [ 'sass' ] );
 } );
 
+/*
+Critical CSS
+ */
+gulp.task( 'start_critical_server', [ 'sass', 'js' ], function() {
+
+	bs = browsersync.init( {
+		server: "./",
+		open:false
+	});
+
+	return gulp.src( '' ).pipe( wait( 5000 ) );
+
+} );
+gulp.task( 'critical_create', [ 'start_critical_server' ], function() {
+
+	var files = [ 'layout.html', 'home_page.html', 'article_list.html' ];
+	var streams = [];
+
+	files.forEach( function( filename ) {
+        streams.push( gulp.src( 'dist/css/layout.css' )
+            .pipe( penthouse( {
+                out: filename  + '.css',
+                url: 'http://localhost:3000/src/' + filename,
+                width: 750,
+                height: 300
+            } ) )
+			.pipe( debug() )
+            .pipe( gulp.dest( 'tmp/critical' ) )
+		);
+	} );
+
+	return merge_stream( streams );
+
+} );
+gulp.task( 'critical_concat', [ 'critical_create' ], function() {
+	return gulp.src( 'tmp/critical/*.css' )
+		.pipe( debug() )
+        .pipe( concat( 'critical.css' ) )
+        .pipe( cleancss( { level: 2 } ) )
+        .pipe( gulp.dest( 'dist/css' ) )
+        .pipe( gulp.dest( '../wp/wp-content/themes/linnette/assets/css' ) );
+} );
+gulp.task( 'critical', [ 'critical_concat' ], function() {
+	browsersync.exit();
+	return gulp.src( 'tmp/critical/**/*', { read: false } )
+		.pipe( clean() );
+} );
 
 /*
 Images
@@ -143,5 +197,5 @@ gulp.task( 'browsersync', function() {
 /*
 Tasks
  */
-gulp.task( 'default', [ 'sass', 'images', 'svg_sprite', 'js' ] );
+gulp.task( 'default', [ 'sass', 'images', 'svg_sprite', 'js', 'critical' ] );
 gulp.task( 'dev', [ 'sass_watch', 'browsersync', 'images_watch', 'svg_sprite_watch' ] );
