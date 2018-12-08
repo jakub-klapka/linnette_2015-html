@@ -11,6 +11,7 @@
 			this.menu_open = false;
 			this.header_hidden = false;
 			this.mobile_header = $( '[data-js-mobile_header]' );
+			this.scroll_to_top_button = $( '[data-js-scroll_to_top_button]' );
 
 			this.bindEvents();
 
@@ -25,6 +26,10 @@
 				} else {
 					t.openMenu();
 				}
+			} );
+
+			this.scroll_to_top_button.on( 'click', function() {
+				$('html').velocity( 'scroll', { offset: 0 } );
 			} );
 
 			enquire.register( 'only screen and (max-width: 480px)', {
