@@ -250,6 +250,10 @@
 			border: none;
 			display: none;
 
+				&.is-hidden {
+					display: none;
+				}
+
 				@supports( position: sticky ) {
 					display: block;
 				}

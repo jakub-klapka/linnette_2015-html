@@ -12,6 +12,9 @@
 			this.header_hidden = false;
 			this.mobile_header = $( '[data-js-mobile_header]' );
 			this.scroll_to_top_button = $( '[data-js-scroll_to_top_button]' );
+			this.scroll_to_top_button_visible = false;
+			this.scroll_to_top_trehsold = 1500;
+			this.window = $(window);
 
 			this.bindEvents();
 
@@ -31,6 +34,20 @@
 			this.scroll_to_top_button.on( 'click', function() {
 				$('html').velocity( 'scroll', { offset: 0 } );
 			} );
+			
+			this.window.scroll( (function() {
+
+				if( this.scroll_to_top_button_visible === false && this.window.scrollTop() > this.scroll_to_top_trehsold ) {
+					this.scroll_to_top_button.removeClass( 'is-hidden' );
+					this.scroll_to_top_button_visible = true;
+				}
+
+				if( this.scroll_to_top_button_visible === true && this.window.scrollTop() <= this.scroll_to_top_trehsold ) {
+                    this.scroll_to_top_button.addClass( 'is-hidden' );
+                    this.scroll_to_top_button_visible = false;
+				}
+
+			}).bind(this) );
 
 			enquire.register( 'only screen and (max-width: 480px)', {
 				match: $.proxy( this.bindMobileHiding, this ),

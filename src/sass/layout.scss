@@ -39,6 +39,7 @@ Layout
 	margin: 0 auto;
 	position: relative;
 	width: 100%;
+	min-height: 100vh;
 
 		.no-flexboxtweener & {
 			&::after {
