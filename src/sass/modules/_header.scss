@@ -87,15 +87,15 @@
 				}
 
 				svg {
-					//AR: 612:238
+					//AR: 60x24
 					height: $tablet_menu_button_width;
-					width: $tablet_menu_button_width * ( 612/238 );
+					width: $tablet_menu_button_width * ( 60/24 );
 					display: block;
 
 						@include respond-to( 'mobile_wrap' ) {
 							$size: $mobile_menu_height - 15px;
 							height: $size;
-							width: $size * ( 612/238 );
+							width: $size * ( 60/24 );
 							display: inline-block;
 							vertical-align: middle;
 						}
@@ -112,7 +112,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
-	padding-top: ( 4 * $base_line_height );
+	padding-top: ( 2 * $base_line_height );
 	z-index: 100;
 
 		@include respond-to( 'tablet_wrap' ) {
@@ -136,8 +136,8 @@
 
 		&__logo {
 			flex: 0 0 auto;
-			$width: 179px;
-			$height: $width * ( 217 / 400 ); //Logo AR: 400*217px
+			$width: 140px;
+			$height: $width * ( 145 / 180 ); //Logo AR: 180x145px
 			width: $width;
 			height: $height;
 			display: block;
