@@ -18,6 +18,14 @@
 
 	p {
 		text-align: justify;
+
+		@if( $add_body_id ) {
+			font-size: $base_font_size;
+			line-height: $base_line_height;
+			font-weight: 300;
+			font-family: $base_font_family;
+		}
+
 	}
 
 	strong {

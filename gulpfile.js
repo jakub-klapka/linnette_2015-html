@@ -28,6 +28,8 @@ var merge_stream = require( 'merge-stream' );
 var debug = require( 'gulp-debug' );
 var clean = require( 'gulp-clean');
 var wait = require('gulp-wait');
+var webpack_stream = require('webpack-stream');
+var webpack = require('webpack');
 
 var dev = ( yargs._[0] === 'dev' ) ? true : false;
 
@@ -66,13 +68,14 @@ SASS
 gulp.task( 'sass', function(){
 
 	return gulp.src( 'src/sass/**/*.scss', { base: 'src/sass' } )
-		.pipe( plumber( plumber_config ) )
-		.pipe( gulpif( dev, sass( {
+		//.pipe( plumber( plumber_config ) )
+		.pipe( gulpif( dev, sass.sync( {
 			outputStyle: 'expanded'
-		} ), sass( {
+		} ).on('error', sass.logError), sass.sync( {
 			outputStyle: 'compressed'
-		} ) ) )
+		} ).on('error', sass.logError) ) )
 		.pipe( autoprefixer() )
+		.pipe( debug() )
 		.pipe( gulp.dest( 'dist/css' ) )
 		.pipe( gulp.dest( '../wp/wp-content/themes/linnette/assets/css' ) )
 		.pipe( browsersync.stream() );
@@ -177,6 +180,52 @@ gulp.task( 'js', function() {
 		.pipe( gulp.dest( '../wp/wp-content/themes/linnette/assets/js' ) );
 } );
 
+/*
+Gutenberg React
+ */
+gulp.task( 'gutenberg', function() {
+
+	return gulp.src('./src/gutenberg/gutenberg.jsx')
+		.pipe( plumber( plumber_config ) )
+		.pipe( webpack_stream( {
+			entry: {
+				gutenberg: './src/gutenberg/gutenberg.jsx'
+			},
+			output: {
+				filename: '[name].js'
+			},
+			mode: dev ? 'development' : 'production',
+			module: {
+				rules: [
+					{
+						test: /\.jsx?$/,
+						exclude: /(node_modules|bower_components)/,
+						use: {
+							loader: 'babel-loader',
+							options: {
+								presets: [
+									'@babel/preset-env',
+									'@babel/preset-react'
+								]
+							}
+						}
+					}
+				]
+			},
+			resolve: {
+				extensions: ['.js', '.jsx'],
+			}
+		}, webpack ) )
+		.pipe( gulp.dest( '../wp/wp-content/themes/linnette/admin-js' ) )
+
+} );
+
+gulp.task( 'gutenberg_watch', [ 'gutenberg' ], function() {
+
+	gulp.watch( './src/gutenberg/**/*', [ 'gutenberg' ] );
+
+} );
+
 
 /*
 DEV
@@ -185,7 +234,8 @@ gulp.task( 'browsersync', function() {
 
 	browsersync.init( {
 		server: "./",
-		directory: true
+		directory: true,
+		open: false
 	} );
 
 	gulp.watch( 'src/*.html' ).on('change', browsersync.reload);
@@ -197,5 +247,5 @@ gulp.task( 'browsersync', function() {
 /*
 Tasks
  */
-gulp.task( 'default', [ 'sass', 'images', 'svg_sprite', 'js', 'critical' ] );
-gulp.task( 'dev', [ 'sass_watch', 'browsersync', 'images_watch', 'svg_sprite_watch' ] );
+gulp.task( 'default', [ 'sass', 'images', 'svg_sprite', 'js', 'critical', 'gutenberg' ] );
+gulp.task( 'dev', [ 'sass_watch', 'browsersync', 'images_watch', 'svg_sprite_watch', 'gutenberg_watch' ] );

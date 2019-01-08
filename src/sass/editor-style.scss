@@ -6,3 +6,9 @@
 #tinymce {
 	@include typo( true );
 }
+
+.editor-styles-wrapper {
+	@include typo( true );
+}
+
+@import "modules/article_gallery";
