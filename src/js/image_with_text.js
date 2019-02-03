@@ -1,12 +1,12 @@
 /* global jQuery, textFit, enquire */
-( function( $, textFit, enquire ){
+( function( $, textFit, enquire, window ){
 
 	var ImageWithText = {
 
 		init: function( el ) {
 			this.el = el;
 			this.timeout = null;
-			this.time_to_get_it_done = 200; //Should be enough to get all fitting done, sorry for performance-dependend code :(
+			this.time_to_get_it_done = 500; //Should be enough to get all fitting done, sorry for performance-dependend code :(
 			this.maxsize = ( typeof el.data( 'js-fittext-maxsize' ) !== 'undefined' ) ? el.data( 'js-fittext-maxsize' ) : 22;
 			this.dontfitbelow = ( typeof el.data( 'js-fittext-dontfitbelow' ) !== 'undefined' ) ? el.data( 'js-fittext-dontfitbelow' ) : 800;
 			this.is_below = false;
@@ -50,11 +50,29 @@
 
 	};
 
+	var initialize_all_objects = function() {
+        $( '[data-js-fittext]' ).each( function(){
+            var item = $( this );
+            if( item.data( 'initialized' ) !== true ){
+                Object.create( ImageWithText ).init( item );
+            }
+            item.data( 'initialized', true );
+        } );
+	};
+
 	//Init
 	$( function() {
-		$( '[data-js-fittext]' ).each( function(){
-			Object.create( ImageWithText ).init( $( this ) );
-		} );
+		initialize_all_objects();
 	} );
 
-} )( jQuery, textFit, enquire );
+	//API
+	if( typeof window.linnette !== 'object') {
+		window.linnette = {};
+	}
+	window.linnette.imageWithText = {
+		refreshAllImages: function() {
+			initialize_all_objects();
+		}
+	};
+
+} )( jQuery, textFit, enquire, window );

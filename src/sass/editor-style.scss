@@ -11,4 +11,18 @@
 	@include typo( true );
 }
 
+.edit-post-visual-editor .editor-post-title,
+.edit-post-visual-editor .editor-block-list__block {
+	max-width:	962px;
+}
+
+.textFitted p {
+	font-size: inherit;
+	line-height: inherit;
+}
+
+.wp-block-quote:not(.is-large):not(.is-style-large) {
+	border-left: 4px solid $highlight_color;
+}
+
 @import "modules/article_gallery";

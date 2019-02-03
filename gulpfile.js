@@ -175,9 +175,16 @@ JS compile
 gulp.task( 'js', function() {
 	return gulp.src( 'src/js/**/*.js', { base: 'src/js' } )
 		.pipe( plumber( plumber_config ) )
-		.pipe( uglify() )
+		.pipe( debug() )
+		.pipe( gulpif( !dev, uglify() ) )
 		.pipe( gulp.dest( 'dist/js' ) )
 		.pipe( gulp.dest( '../wp/wp-content/themes/linnette/assets/js' ) );
+} );
+
+gulp.task( 'js_watch', ['js'], function() {
+
+	gulp.watch( 'src/js/**/*.js', [ 'js' ] );
+
 } );
 
 /*
@@ -248,4 +255,4 @@ gulp.task( 'browsersync', function() {
 Tasks
  */
 gulp.task( 'default', [ 'sass', 'images', 'svg_sprite', 'js', 'critical', 'gutenberg' ] );
-gulp.task( 'dev', [ 'sass_watch', 'browsersync', 'images_watch', 'svg_sprite_watch', 'gutenberg_watch' ] );
+gulp.task( 'dev', [ 'sass_watch', 'browsersync', 'images_watch', 'svg_sprite_watch', 'gutenberg_watch', 'js_watch' ] );
